@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
-	before_action :authenticate_user!
-	
+	before_action 	:check
 
 	def index
   	
@@ -8,8 +7,20 @@ class StaticPagesController < ApplicationController
   	
   	
   	def home
-  		
+  
   	end
 
  
+
+private 
+
+def check
+	if params[:action] == "index"
+		:authenticate_user!
+	else
+		redirect_to user_session_path
+	end
+			
+end
+
 end
