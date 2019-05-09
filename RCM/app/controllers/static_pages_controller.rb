@@ -10,14 +10,17 @@ class StaticPagesController < ApplicationController
   
   	end
 
+  	def simple_character
+
+  	end
  
 
 private 
 
 def check
-	if params[:action] == "index" && user_signed_in?
+	if (params[:action] == "index" || params[:action] == "simple_character") && user_signed_in?
 		redirect_to static_pages_home_url
-	elsif params[:action] == "index" && ! user_signed_in?
+	elsif (params[:action] == "index" || params[:action] == "simple_character" )&& ! user_signed_in?
 		nil
 	elsif ! user_signed_in?
 		redirect_to root_path
