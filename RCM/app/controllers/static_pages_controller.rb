@@ -15,11 +15,16 @@ class StaticPagesController < ApplicationController
 private 
 
 def check
-	if params[:action] == "index"
-		:authenticate_user!
-	else
-		redirect_to user_session_path
+	if params[:action] == "index" && user_signed_in?
+		redirect_to static_pages_home_url
+	elsif params[:action] == "index" && ! user_signed_in?
+		nil
+	elsif ! user_signed_in?
+		redirect_to root_path
+	elsif ! user_signed_in?
+		redirect_to static_pages_home_url
 	end
+
 			
 end
 
