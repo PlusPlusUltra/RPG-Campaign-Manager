@@ -2,18 +2,17 @@ class StaticPagesController < ApplicationController
 	before_action 	:check
 
 	def index
-  	
 	end
   	
   	
   	def home
-  
   	end
 
   	def simple_character
-
   	end
- 
+	 
+  	def profile
+  	end
 
 private 
 

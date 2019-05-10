@@ -1,0 +1,17 @@
+<% provide(:title, "Profile") %>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <h1>This is your profile where you can find your informations</h1>
+    
+    <p>	E-Mail: <%= current_user.email%></p>
+
+	<p>Nickname:</p>
+
+    <p>
+      <input type="button" name="changePassword" value="Change Password" onclick="location.href = 'static_pages/simple_character';">
+    </p>
+    <p><%= link_to "Home Page", static_pages_home_url%><br /></p>
+  </body>
+</html>
