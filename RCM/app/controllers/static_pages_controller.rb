@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
-	before_action 	:check
-
+	before_action 	:authenticate_user!, :except => [:simple_character, :index]
+	before_action :check
 	def index
 	end
   	
@@ -16,18 +16,10 @@ class StaticPagesController < ApplicationController
 
 private 
 
-def check
-	if (params[:action] == "index" || params[:action] == "simple_character") && user_signed_in?
-		redirect_to static_pages_home_url
-	elsif (params[:action] == "index" || params[:action] == "simple_character" )&& ! user_signed_in?
-		nil
-	elsif ! user_signed_in?
-		redirect_to root_path
-	elsif ! user_signed_in?
-		redirect_to static_pages_home_url
+	def check
+		if (params[:action] == "index" || params[:action] == "simple_character") && user_signed_in?
+			redirect_to static_pages_home_url
+		end		
 	end
-
-			
-end
 
 end
