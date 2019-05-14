@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
         :omniauthable, :omniauth_providers => [:google_oauth2]
     attr_writer :login
 
+    def login
+    	@login || self.username || self.email
+  	end
+  	
     validates :username, presence: :true, uniqueness: { case_sensitive: false }
 
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
@@ -33,9 +37,6 @@ class User < ActiveRecord::Base
       end
     end
 
-    def login
-    	@login || self.username || self.email
-  	end
     
 
     if authorization.user.blank?
