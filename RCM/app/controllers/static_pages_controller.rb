@@ -26,7 +26,10 @@ private
 				current_user.update_attribute :admin, true
 			end
 			redirect_to static_pages_home_url
-		end		
+		end
+		if params[:action] == "show_all_users" && !current_user.admin?
+			redirect_to static_pages_home_url
+		end
 	end
 
 end
