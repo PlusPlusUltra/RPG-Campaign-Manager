@@ -13,6 +13,17 @@
     <p>
       <input type="button" name="myCampaings" value="My Campaigns" onclick="location.href = '';">
     </p>
+
+    <p> <% if current_user.admin? %>
+      	<input type="button" name="allUsers" value="All Users" onclick="location.href = '';">
+    	<% end %>
+    </p>
+
+    <p> <% if current_user.admin? %>
+      	<input type="button" name="allCampaings" value="All Campaigns" onclick="location.href = '';">
+    	<% end %>
+    </p>
+
     <p>
       <input type="button" name="profile" value="View Profile" onclick="location.href = 'profile';">
   	</p>
