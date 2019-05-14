@@ -10,17 +10,20 @@ class User < ActiveRecord::Base
 
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
-    def self.from_omniauth(auth)
-    	where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-    		user.provider = auth.provider
-    		user.uid = auth.uid
-    		user.email = auth.info.email
-    		user.name = auth.info.name
-    		user.password = Devise.friendly_token[0,20]
-    		user.save!
-    	end
-    end
+    has_many :authorizations
 
+    # omniauth facebook provider
+    def self.from_omniauth(auth, current_user)
+        # check for existing authorization
+        # Find or create Authorization with: provider, uid, token and secret
+    authorization = Authorization.where(
+      :provider => auth.provider, 
+      :uid => auth.uid.to_s, 
+      :token => auth.credentials.token, 
+      :secret => auth.credentials.secret
+    ).first_or_initialize
+
+<<<<<<< HEAD
     def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -34,5 +37,30 @@ class User < ActiveRecord::Base
     	@login || self.username || self.email
   	end
     
+=======
+    if authorization.user.blank?
+      user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
+>>>>>>> 55b75dcdf4404c118eb76e0caa4b0c975911cda2
 
+      # save user related data in user table
+      if user.blank?
+        User.new(
+          :email            => auth.info.email,
+          :password         => Devise.friendly_token[0,10],
+          :name             => auth.info.name,
+          :locations        => auth.info.location,
+          :image_url        => auth.info.image
+        )
+        # since twitter don't provide email, 
+        # so you need to skip validation for twitter.
+        auth.provider == "twitter" ?  user.save!(:validate => false) :  user.save!
+      end
+
+      # store authorization related data in authorization table
+      authorization.username = auth.info.nickname
+      authorization.user_id = user.id
+      authorization.save!
+    end
+    authorization.user
+  end
 end
