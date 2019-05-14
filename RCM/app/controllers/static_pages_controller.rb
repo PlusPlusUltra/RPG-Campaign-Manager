@@ -14,11 +14,15 @@ class StaticPagesController < ApplicationController
   	def profile
   	end
 
+  	def show_all_users
+  		@users= User.all
+  	end
+
 private 
 
 	def check
 		if (params[:action] == "index" || params[:action] == "simple_character") && user_signed_in?
-			if current_user.email =="pivari@pivari.it"
+			if current_user.email =="pivarim@gmail.com"
 				current_user.update_attribute :admin, true
 			end
 			redirect_to static_pages_home_url

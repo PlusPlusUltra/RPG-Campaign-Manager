@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   get 'static_pages/simple_character'
   get 'static_pages/profile'
+  get 'static_pages/show_all_users'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

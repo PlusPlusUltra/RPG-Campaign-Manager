@@ -1,0 +1,15 @@
+<% provide(:title, "All Users") %>
+<!DOCTYPE html>
+<h1>Listing users</h1>
+ 
+
+ 
+  <% @users.each do |user| %>
+      <p><%= user.email %><br />
+      <%= user.username %><br />
+      <input type="button" name="ban" value="Ban" onclick="location.href = '';"><br />
+      <input type="button" name="admin" value="Promote to Admin" onclick="location.href = '';">
+    </p>
+  <% end %>
+
+  <p><%= link_to "Home Page", static_pages_home_url%><br /></p>
