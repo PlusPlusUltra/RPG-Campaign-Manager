@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       :secret => auth.credentials.secret
     ).first_or_initialize
 
-<<<<<<< HEAD
+
     def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
       if login = conditions.delete(:login)
@@ -37,10 +37,9 @@ class User < ActiveRecord::Base
     	@login || self.username || self.email
   	end
     
-=======
+
     if authorization.user.blank?
       user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
->>>>>>> 55b75dcdf4404c118eb76e0caa4b0c975911cda2
 
       # save user related data in user table
       if user.blank?
