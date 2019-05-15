@@ -4,7 +4,7 @@
   
   <body>
     <h1>home page for logged user</h1>
-    <p>Hi User! This is your homepage</p>
+    <p>Hi <%= current_user.username%>! This is your homepage</p>
     
     <p>
       <input type="button" name="myCharacters" value="My Characters" onclick="location.href = '';">
