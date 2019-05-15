@@ -11,6 +11,9 @@
 
   <body>
     <%= yield %>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
     <% if user_signed_in? %>
       [<%= link_to 'Logout',destroy_user_session_path, :method => :delete%>]
     <% end %>

@@ -3,19 +3,20 @@ class User < ActiveRecord::Base
   	# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   	devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :trackable, :validatable,
-        :omniauthable, :omniauth_providers => [:google_oauth2], authentication_keys: [:login]
-    attr_writer :login
+        :omniauthable, :omniauth_providers => [:google_oauth2],
+        authentication_keys: [:login]
+    
+    attr_accessor :login
 
     def login
-    	@login  || self.email || self.username
-  	end
+      @login || self.email || self.username
+    end
 
-  	validates :email, uniqueness: true
+    validates :email, uniqueness: true
     validates :username, uniqueness: { case_sensitive: false }
 
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
-    has_many :authorizations
 
     def self.find_for_database_authentication(warden_conditions)
       conditions = warden_conditions.dup
@@ -25,46 +26,20 @@ class User < ActiveRecord::Base
         where(conditions.to_h).first
       end
     end
-
-
-
-    # omniauth facebook provider
-    def self.from_omniauth(auth, current_user)
-        # check for existing authorization
-        # Find or create Authorization with: provider, uid, token and secret
-    authorization = Authorization.where(
-      :provider => auth.provider, 
-      :uid => auth.uid.to_s, 
-      :token => auth.credentials.token, 
-      :secret => auth.credentials.secret
-    ).first_or_initialize
-
-
-
     
-
-    if authorization.user.blank?
-      user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
-
-      # save user related data in user table
-      if user.blank?
-        User.new(
-          :email            => auth.info.email,
-          :password         => Devise.friendly_token[0,10],
-          :name             => auth.info.name,
-          :locations        => auth.info.location,
-          :image_url        => auth.info.image
-        )
-        # since twitter don't provide email, 
-        # so you need to skip validation for twitter.
-        auth.provider == "twitter" ?  user.save!(:validate => false) :  user.save!
+    def self.from_omniauth(auth)
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
       end
-
-      # store authorization related data in authorization table
-      authorization.username = auth.info.nickname
-      authorization.user_id = user.id
-      authorization.save!
     end
-    authorization.user
+
+    def self.new_with_session(params, session)
+      super.tap do |user|
+      if data = session["devise.google_data"] && session["devise.google_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+
   end
 end
