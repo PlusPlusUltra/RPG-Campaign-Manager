@@ -17,6 +17,11 @@ class StaticPagesController < ApplicationController
   	def show_all_users
   		@users= User.all
   	end
+  	def change_role
+  		@user=User.find(params[:id])
+  		@user.update_attribute(:admin, !@user.admin?)
+  		redirect_to static_pages_show_all_users_url
+  	end
 
 private 
 

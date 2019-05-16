@@ -7,8 +7,13 @@
   <% @users.each do |user| %>
       <p><%= user.email %><br />
       <%= user.username %><br />
+      <p> Admin: <%= user.admin%></p>
       <input type="button" name="ban" value="Ban" onclick="location.href = '';"><br />
-      <input type="button" name="admin" value="Promote to Admin" onclick="location.href = '';">
+      <% if  !user.admin %>
+        <%= link_to("Upgrade to Admin", change_role_path(user.id)) %><br />
+      <% else %>
+        <%= link_to("Downgrade to User", change_role_path(user.id)) %><br />
+      <% end %>
     </p>
   <% end %>
 

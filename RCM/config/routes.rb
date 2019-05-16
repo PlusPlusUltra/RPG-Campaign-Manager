@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'static_pages/simple_character'
   get 'static_pages/profile'
   get 'static_pages/show_all_users'
+  get '/static_pages/change_role/:id' => 'static_pages#change_role' ,:as => :change_role
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
