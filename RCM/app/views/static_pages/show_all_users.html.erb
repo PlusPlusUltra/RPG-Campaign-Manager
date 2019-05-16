@@ -11,7 +11,7 @@
       <input type="button" name="ban" value="Ban" onclick="location.href = '';"><br />
       <% if  !user.admin %>
         <%= link_to("Upgrade to Admin", change_role_path(user.id)) %><br />
-      <% else %>
+      <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" )%>
         <%= link_to("Downgrade to User", change_role_path(user.id)) %><br />
       <% end %>
     </p>
