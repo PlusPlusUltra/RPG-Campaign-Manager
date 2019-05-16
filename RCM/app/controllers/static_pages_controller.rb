@@ -33,7 +33,7 @@ private
 		if params[:action] == "show_all_users" && !current_user.admin?
 			redirect_to static_pages_home_url
 		end
-		if user_signed_in? && !current_user.admin? && (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" )
+		if user_signed_in? && !current_user.admin? && (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it")
 				current_user.update_attribute :admin, true
 			end
 	end
