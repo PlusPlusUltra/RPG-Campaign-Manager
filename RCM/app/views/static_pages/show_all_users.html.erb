@@ -7,13 +7,17 @@
   <% @users.each do |user| %>
       <p><%= user.email %><br />
       <%= user.username %><br />
-      <p> Admin: <%= user.admin%></p>
+      <% if  user.admin %>
+        <p> Admin</p>
+      <% else %>
+         <p> User</p>
+      <% end %>
       <input type="button" name="ban" value="Ban" onclick="location.href = '';"><br />
       <% if  !user.admin %>
         <%= link_to("Upgrade to Admin", change_role_path(user.id)) %><br />
-      <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" )%>
+      <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" )||(user.email==current_user.email)%>
         <%= link_to("Downgrade to User", change_role_path(user.id)) %><br />
-      <% end %>
+      <% end %><br />
     </p>
   <% end %>
 
