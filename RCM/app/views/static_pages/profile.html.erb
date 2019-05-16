@@ -8,9 +8,9 @@
     <p>	E-Mail: <%= current_user.email%></p>
 
 	<p>Nickname: <%= current_user.username%> </p>
-
-	<p> Admin: <%= current_user.admin%></p>
-
+	<% if  current_user.admin %>
+		<p> You're an Admin!</p>
+	<% end %>
     <p><%= link_to "Edit User Profile", edit_user_registration_path %></p>
 
     <p><%= link_to "Home Page", static_pages_home_url%><br /></p>
