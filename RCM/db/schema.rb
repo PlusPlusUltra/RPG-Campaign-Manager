@@ -12,6 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2019_05_17_092935) do
 
+  create_table "characters", force: :cascade do |t|
+    t.string "name"
+    t.integer "lvl"
+    t.string "class"
+    t.string "race"
+    t.string "info"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
