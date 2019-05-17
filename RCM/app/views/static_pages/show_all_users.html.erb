@@ -12,8 +12,17 @@
       <% else %>
          <p> User</p>
       <% end %>
-      <input type="button" name="ban" value="Ban" onclick="location.href = '';"><br />
+      <% if  user.block %>
+        <p> This user is blocked</p>
+      <% end %>
+
+
       <% if  !user.admin %>
+        <% if  !user.block %>
+          <%= link_to("Block User", block_user_path(user.id)) %><br />
+        <% else%>
+          <%= link_to("Unblock User", unblock_user_path(user.id)) %><br />
+        <% end %>
         <%= link_to("Upgrade to Admin", change_role_path(user.id)) %><br />
       <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it" )||(user.email==current_user.email)%>
         <%= link_to("Downgrade to User", change_role_path(user.id)) %><br />

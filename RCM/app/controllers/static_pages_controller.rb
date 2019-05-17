@@ -22,6 +22,16 @@ class StaticPagesController < ApplicationController
   		@user.update_attribute(:admin, !@user.admin?)
   		redirect_to static_pages_show_all_users_url
   	end
+  	def block_user
+  		@user=User.find(params[:id])
+  		@user.update_attribute(:block, true)
+  		redirect_to static_pages_show_all_users_url
+  	end
+  	def unblock_user
+  		@user=User.find(params[:id])
+  		@user.update_attribute(:block, false)
+  		redirect_to static_pages_show_all_users_url
+  	end
 
 private 
 

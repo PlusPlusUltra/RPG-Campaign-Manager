@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
       @login || self.email || self.username
     end
 
+    def active_for_authentication?
+ 		super && !self.block
+	end
+
     validates :email, uniqueness: true
     validates :username, uniqueness: { case_sensitive: false }
 
