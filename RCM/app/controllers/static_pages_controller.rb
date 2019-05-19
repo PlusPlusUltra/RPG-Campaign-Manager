@@ -40,7 +40,7 @@ private
 			
 			redirect_to static_pages_home_url
 		end
-		if params[:action] == "show_all_users" && !current_user.admin?
+		if (params[:action] == "show_all_users" || params[:action] == "change_role" ||params[:action] == "block_user" || params[:action] == "unblock_user" ) && !current_user.admin?
 			redirect_to static_pages_home_url
 		end
 		if user_signed_in? && !current_user.admin? && (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it")
