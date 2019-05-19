@@ -1,0 +1,37 @@
+<% provide(:title, "My Characters") %>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <h1>All characters</h1>
+ 
+      <%= button_to 'New Character', new_character_path, method: :get %>
+      <br>
+
+      <table>
+        <tr>
+         <th>Name</th>
+          <th>Level</th>
+          <th>Race</th>
+          <th>Class</th>
+          <th>Info</th>
+        </tr>
+ 
+        <% @characters.each do |character| %>
+        <tr>
+          <td><%= character.name %></td>
+          <td><%= character.lvl %></td>
+          <td><%= character.race %></td>
+          <td><%= character.class_type %></td>
+          <td><%= character.info %></td>
+          <td><%= button_to 'Show', character_path(character), method: :get %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    <br>
+    <%= button_to 'Back', root_path, method: :get %>
+    <br>
+    
+  </body>
+</html>

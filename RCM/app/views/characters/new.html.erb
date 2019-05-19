@@ -1,0 +1,56 @@
+<% provide(:title, "Create a Character") %>
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <!--ERRORS-->
+    <% if @character.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@character.errors.count, "error") %>
+          </h2>
+          <ul>
+            <% @character.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_with scope: :character, url: characters_path do |form| %>
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+  
+    <p>
+      <%= form.label :lvl%> <br>
+      <%= number_field(:character, :lvl, in: 1..20, step: 1) %>
+    </p>
+    
+    <p>
+      <%= label_tag(:race, "Race") %>
+      <%= form.select :race, ['race1', 'race2']%>
+    </p>
+
+    <p>
+      <%= label_tag(:class_type, "Class") %>
+      <%= form.select :class_type, ['class1', 'class2']%>
+    </p>
+
+    <p>
+      <%= form.label :info %><br>
+      <%= form.text_area :info %>
+    </p>
+ 
+    <p>
+      <%= form.submit %>
+    </p>
+    <% end %>
+
+    <%= button_to 'Back', characters_path, method: :get %>
+
+  </body>
+</html>
