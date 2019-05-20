@@ -30,8 +30,12 @@
 		</p>
 
 		<p>
-      <%= button_to 'My Characters', characters_path, method: :get %>
+      <%= button_to 'Back to My Characters', characters_path, method: :get %>
   	</p>
+
+    <p>
+      <%= button_to 'Edit', edit_character_path(@character), method: :get %>
+    </p>
 
   	<br>
 	</body>

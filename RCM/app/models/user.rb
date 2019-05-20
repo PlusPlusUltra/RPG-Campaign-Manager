@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
         :omniauthable, :omniauth_providers => [:google_oauth2],
         authentication_keys: [:login]
     
+    has_many :characters, dependent: :destroy
+
     attr_accessor :login
 
     def login

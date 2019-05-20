@@ -7,7 +7,7 @@
     <p>Hi <%= current_user.username%>! This is your homepage</p>
     
     <p>
-      <input type="button" name="myCharacters" value="My Characters" onclick="location.href = '';">
+      <%= button_to 'My Characters', characters_path, method: :get %>
     </p>
 
     <p>

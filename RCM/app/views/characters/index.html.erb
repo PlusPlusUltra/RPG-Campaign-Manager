@@ -25,6 +25,7 @@
           <td><%= character.class_type %></td>
           <td><%= character.info %></td>
           <td><%= button_to 'Show', character_path(character), method: :get %></td>
+          <td><%= button_to 'Edit', edit_character_path(character), method: :get %></td>
         </tr>
         <% end %>
       </table>
