@@ -37,6 +37,12 @@
       <%= button_to 'Edit', edit_character_path(@character), method: :get %>
     </p>
 
-  	<br>
+    <p>
+      <%= button_to 'Delete', character_path(@character),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </p>
+  	
+    <br>
 	</body>
 </html>

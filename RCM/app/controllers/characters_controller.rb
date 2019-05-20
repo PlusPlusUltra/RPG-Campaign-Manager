@@ -37,6 +37,13 @@ class CharactersController < ApplicationController
   	end
 	end
 
+	def destroy
+		@character = Character.find(params[:id])
+		@character.destroy
+
+		redirect_to characters_path
+	end
+
 	private def character_params
     params.require(:character).permit(:name, :lvl, :race, :class_type, :info)
   end

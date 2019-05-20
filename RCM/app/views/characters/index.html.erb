@@ -26,6 +26,9 @@
           <td><%= character.info %></td>
           <td><%= button_to 'Show', character_path(character), method: :get %></td>
           <td><%= button_to 'Edit', edit_character_path(character), method: :get %></td>
+          <td><%= button_to 'Delete', character_path(character),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
       </table>
