@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
         authentication_keys: [:login]
     
     has_many :characters, dependent: :destroy
+    has_many :campaigns
 
     attr_accessor :login
 

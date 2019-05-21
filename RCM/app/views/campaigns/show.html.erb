@@ -1,0 +1,33 @@
+<% provide(:title, "Campaign") %>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+		<p>
+  		<strong>Title:</strong>
+  		<%= @campaign.title %>
+		</p>
+
+		<p>
+  		<strong>Description:</strong>
+  		<%= @campaign.description %>
+		</p>
+
+		<p>
+      <%= button_to 'Back to My Campaigns', campaigns_path, method: :get %>
+  	</p>
+
+    <p>
+      <%= button_to 'Edit', edit_campaign_path(@campaign), method: :get %>
+    </p>
+
+    <p>
+      <%= button_to 'Delete', campaign_path(@campaign),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </p>
+  	
+    <br>
+	</body>
+</html>
