@@ -11,7 +11,7 @@
     </p>
 
     <p>
-      <input type="button" name="myCampaings" value="My Campaigns" onclick="location.href = '';">
+      <%= button_to 'My Campaigns', campaigns_path, method: :get %>
     </p>
 
     <p> <% if current_user.admin? %>
