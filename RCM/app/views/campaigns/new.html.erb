@@ -19,7 +19,7 @@
       </div>
     <% end %>
 
-    <%= form_with scope: :campaign, url: campaigns_path do |form| %>
+    <%= form_with scope: :campaign, url: user_campaigns_path do |form| %>
     <p>
       <%= form.label :title %><br>
       <%= form.text_field :title %>
@@ -36,7 +36,7 @@
     </p>
     <% end %>
 
-    <%= button_to 'Back', campaigns_path, method: :get %>
+    <%= button_to 'Back', user_campaigns_path, method: :get %>
 
   </body>
 </html>

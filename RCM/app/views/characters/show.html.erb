@@ -4,6 +4,9 @@
 <html>
 
 <body>
+
+    <p> Here's your character <%= @user.username %> </p>
+
 		<p>
   		<strong>Name:</strong>
   		<%= @character.name %>
@@ -30,15 +33,15 @@
 		</p>
 
 		<p>
-      <%= button_to 'Back to My Characters', characters_path, method: :get %>
+      <%= button_to 'Back to My Characters', user_characters_path, method: :get %>
   	</p>
 
     <p>
-      <%= button_to 'Edit', edit_character_path(@character), method: :get %>
+      <%= button_to 'Edit', edit_user_character_path(@user), method: :get %> 
     </p>
 
     <p>
-      <%= button_to 'Delete', character_path(@character),
+      <%= button_to 'Delete', user_character_path(@user),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
     </p>

@@ -1,7 +1,7 @@
 
-<h1>Edit Your Campaigns</h1>
+<h1>Edit Your Campaign</h1>
  
-<%= form_with(model: @campaign, local: true) do |form| %>
+<%= form_with(model: [@user, @campaign], local: true) do |form| %>
  
   <% if @campaign.errors.any? %>
     <div id="error_explanation">
@@ -33,4 +33,4 @@
  
 <% end %>
  
-<%= link_to 'Back', campaigns_path %>
+<%= link_to 'Back', user_campaigns_path %>

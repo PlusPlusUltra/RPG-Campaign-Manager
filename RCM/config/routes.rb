@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   get '/static_pages/block_user/:id' => 'static_pages#block_user' ,:as => :block_user
   get '/static_pages/unblock_user/:id' => 'static_pages#unblock_user' ,:as => :unblock_user
 
-  resources :characters
-  resources :campaigns
+  resources :users do
+    resources :characters
+    resources :campaigns
+  end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -5,7 +5,7 @@
   <body>
     <h1>All campaigns</h1>
  
-      <%= button_to 'New Campaign', new_campaign_path, method: :get %>
+      <%= button_to 'New Campaign', new_user_campaign_path, method: :get %>
       <br>
 
       <table>
@@ -18,9 +18,9 @@
         <tr>
           <td><%= campaign.title %></td>
           <td><%= campaign.description %></td>
-          <td><%= button_to 'Show', campaign_path(campaign), method: :get %></td>
-          <td><%= button_to 'Edit', edit_campaign_path(campaign), method: :get %></td>
-          <td><%= button_to 'Delete', campaign_path(campaign),
+          <td><%= button_to 'Show', user_campaign_path(current_user, campaign), method: :get %></td>
+          <td><%= button_to 'Edit', edit_user_campaign_path(current_user, campaign), method: :get %></td>
+          <td><%= button_to 'Delete', user_campaign_path(current_user, campaign),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
         </tr>

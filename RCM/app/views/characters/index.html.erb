@@ -5,7 +5,7 @@
   <body>
     <h1>All characters</h1>
  
-      <%= button_to 'New Character', new_character_path, method: :get %>
+      <%= button_to 'New Character', new_user_character_path, method: :get %>
       <br>
 
       <table>
@@ -24,11 +24,10 @@
           <td><%= character.race %></td>
           <td><%= character.class_type %></td>
           <td><%= character.info %></td>
-          <td><%= button_to 'Show', character_path(character), method: :get %></td>
-          <td><%= button_to 'Edit', edit_character_path(character), method: :get %></td>
-          <td><%= button_to 'Delete', character_path(character),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show', user_character_path(current_user, character) %></td>
+          <td><%= link_to 'Edit', edit_user_character_path(current_user, character) %></td>
+          <td><%= link_to 'Delete', user_character_path(current_user, character),
+              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
         </tr>
         <% end %>
       </table>

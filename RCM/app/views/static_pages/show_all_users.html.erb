@@ -16,6 +16,8 @@
         <p> This user is blocked</p>
       <% end %>
 
+      <p> <%= link_to("View his characters", user_characters_path(user.id)) %> </p>
+
 
       <% if  !user.admin %>
         <% if  !user.block %>

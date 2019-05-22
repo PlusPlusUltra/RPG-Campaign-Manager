@@ -15,15 +15,15 @@
 		</p>
 
 		<p>
-      <%= button_to 'Back to My Campaigns', campaigns_path, method: :get %>
+      <%= button_to 'Back to My Campaigns', user_campaigns_path, method: :get %>
   	</p>
 
     <p>
-      <%= button_to 'Edit', edit_campaign_path(@campaign), method: :get %>
+      <%= button_to 'Edit', edit_user_campaign_path(@user), method: :get %>
     </p>
 
     <p>
-      <%= button_to 'Delete', campaign_path(@campaign),
+      <%= button_to 'Delete', user_campaign_path(@user),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>
     </p>

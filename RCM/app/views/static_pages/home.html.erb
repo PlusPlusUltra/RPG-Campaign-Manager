@@ -7,11 +7,11 @@
     <p>Hi <%= current_user.username%>! This is your homepage</p>
     
     <p>
-      <%= button_to 'My Characters', characters_path, method: :get %>
+      <%= button_to 'My Characters', user_characters_path(current_user.id), method: :get %> 
     </p>
 
     <p>
-      <%= button_to 'My Campaigns', campaigns_path, method: :get %>
+      <%= button_to 'My Campaigns', user_campaigns_path(current_user.id), method: :get %> 
     </p>
 
     <p> <% if current_user.admin? %>

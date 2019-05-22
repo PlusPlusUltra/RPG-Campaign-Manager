@@ -1,7 +1,7 @@
 
 <h1>Edit Your Character</h1>
  
-<%= form_with(model: @character, local: true) do |form| %>
+<%= form_with(model: [@user, @character], local: true) do |form| %>
  
   <% if @character.errors.any? %>
     <div id="error_explanation">
@@ -48,4 +48,4 @@
  
 <% end %>
  
-<%= link_to 'Back', characters_path %>
+<%= link_to 'Back', user_characters_path %>
