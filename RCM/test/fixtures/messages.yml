@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  dest: MyString
+  campaign: MyString
+  date: MyString
+
+two:
+  type: 
+  dest: MyString
+  campaign: MyString
+  date: MyString

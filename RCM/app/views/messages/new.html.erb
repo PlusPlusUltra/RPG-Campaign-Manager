@@ -1,0 +1,28 @@
+<h1> provvisorio </h1>
+
+<%= form_with scope: :message, url: messages_path, local: true do |form| %>
+  <p>
+    <%= label_tag(:dest, "dest") %>
+    <%= form.select :dest, ['race1', 'race2']%>
+  </p>
+ 
+  <p>
+    
+    <%= label_tag(:campaign, "campaign") %>
+    <%= form.select :campaign, ['race1', 'race2']%>
+  </p>
+  
+  <p>
+    <%= label_tag(:date, "date") %>
+    <%= form.select :date, ['race1', 'race2']%>
+  </p>
+  
+  <p>
+    <%= label_tag(:date, "date") %>
+    <%= form.select :date, ['race1', 'race2']%>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
