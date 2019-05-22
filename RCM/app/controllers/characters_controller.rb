@@ -1,5 +1,6 @@
 class CharactersController < ApplicationController
 	before_action :authenticate_user!
+	before_action :check
 	
 	def index
 		@user = User.find(params[:user_id])
@@ -56,4 +57,9 @@ class CharactersController < ApplicationController
     params.require(:character).permit(:name, :lvl, :race, :class_type, :info)
   end
 
+  private def check
+  	if (params[:user_id] != current_user && !current_user.admin?)
+			redirect_to static_pages_home_url
+		end
+  end
 end

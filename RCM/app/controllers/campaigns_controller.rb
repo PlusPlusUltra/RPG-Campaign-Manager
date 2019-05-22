@@ -1,5 +1,6 @@
 class CampaignsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :check
 	
 	def index
 		@user = User.find(params[:user_id])
@@ -53,6 +54,12 @@ class CampaignsController < ApplicationController
 
 	private def campaign_params
     params.require(:campaign).permit(:title, :description)
+  end
+
+  private def check
+  	if (params[:user_id] != current_user && !current_user.admin?)
+			redirect_to static_pages_home_url
+		end
   end
 
 end
