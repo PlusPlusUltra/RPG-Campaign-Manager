@@ -58,7 +58,8 @@ class CharactersController < ApplicationController
   end
 
   private def check
-  	if (params[:user_id] != current_user && !current_user.admin?)
+  	@user = User.find(params[:user_id])
+  	if ((@user != current_user) && !current_user.admin?)
 			redirect_to static_pages_home_url
 		end
   end

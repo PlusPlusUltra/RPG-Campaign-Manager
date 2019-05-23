@@ -5,31 +5,34 @@
 
  
   <% @users.each do |user| %>
-      <p><%= user.email %><br />
-      <%= user.username %><br />
-      <% if  user.admin %>
-        <p> Admin</p>
-      <% else %>
-         <p> User</p>
+    <p> <strong> Email: </strong><%= user.email %><br />
+    <strong> Username: </strong><%= user.username %><br />
+    <strong> Role: </strong> <% if user.admin %>
+      Admin
+    <% else %>
+      User
+    <% end %> <br>
+    <% if user.block %>
+      This user is blocked
+    <% end %>
+
+    <p> <%= button_to "View his characters", user_characters_path(user.id), method: :get %> </p>
+
+
+    <% if  !user.admin %>
+      <% if  !user.block %>
+        <%= button_to "Block User", block_user_path(user.id), method: :get %><br />
+      <% else%>
+        <%= button_to "Unblock User", unblock_user_path(user.id), method: :get %><br />
       <% end %>
-      <% if  user.block %>
-        <p> This user is blocked</p>
-      <% end %>
-
-      <p> <%= link_to("View his characters", user_characters_path(user.id)) %> </p>
-
-
-      <% if  !user.admin %>
-        <% if  !user.block %>
-          <%= link_to("Block User", block_user_path(user.id)) %><br />
-        <% else%>
-          <%= link_to("Unblock User", unblock_user_path(user.id)) %><br />
-        <% end %>
-        <%= link_to("Upgrade to Admin", change_role_path(user.id)) %><br />
+      <%= button_to "Upgrade to Admin", change_role_path(user.id), method: :get %><br />
       <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it" )||(user.email==current_user.email)%>
         <%= link_to("Downgrade to User", change_role_path(user.id)) %><br />
-      <% end %><br />
+    <% end %>
     </p>
+    <hr>
   <% end %>
 
-  <p><%= link_to "Home Page", static_pages_home_url%><br /></p>
+  <p> <%= link_to "Home Page", static_pages_home_url%><br />
+    <%= button_to "Back", :back, method: :get %>
+  </p>

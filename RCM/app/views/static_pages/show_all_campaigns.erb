@@ -1,0 +1,17 @@
+<% provide(:title, "All Campaigns") %>
+<!DOCTYPE html>
+<h1>Listing campaigns</h1>
+
+ 
+  <% @users.each do |user| %>
+    <strong> Username: </strong><%= user.username %><br>
+      <br>
+    <% user.campaigns.each do |campaign| %>
+      <strong> Title: </strong><%= campaign.title %><br>
+      <strong> Description: </strong><%= campaign.description %><br>
+      <%= button_to "View this campaign", user_campaign_path(user.id, campaign.id), method: :get %>
+      <br>
+    <% end %><hr />
+  <% end %>
+
+  <p><%= link_to "Home Page", static_pages_home_url%><br /></p>

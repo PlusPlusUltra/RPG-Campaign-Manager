@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'static_pages/simple_character'
   get 'static_pages/profile'
   get 'static_pages/show_all_users'
+  get 'static_pages/show_all_campaigns'
   get '/static_pages/change_role/:id' => 'static_pages#change_role' ,:as => :change_role
   get '/static_pages/block_user/:id' => 'static_pages#block_user' ,:as => :block_user
   get '/static_pages/unblock_user/:id' => 'static_pages#unblock_user' ,:as => :unblock_user
