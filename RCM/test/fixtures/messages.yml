@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  type: 
   dest: MyString
+  type: 
+  sender: MyString
   campaign: MyString
-  date: MyString
+  user: one
 
 two:
-  type: 
   dest: MyString
+  type: 
+  sender: MyString
   campaign: MyString
-  date: MyString
+  user: two

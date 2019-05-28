@@ -1,9 +1,13 @@
-<p>
-  <strong>Title:</strong>
-  <%= @message.dest %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @message.date %>
-</p>
+<% provide(:title, "Character") %>
+
+<!DOCTYPE html>
+<html>
+
+	<body>
+		<p>
+  		<strong>Name:</strong>
+  		<%= @message.dest %>
+		</p>
+   
+	</body>
+</html>

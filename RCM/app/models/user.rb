@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     
     has_many :characters
     has_many :campaigns
+    has_many :messages
 
     attr_accessor :login
 
