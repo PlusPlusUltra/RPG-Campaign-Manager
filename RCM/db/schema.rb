@@ -30,14 +30,12 @@ ActiveRecord::Schema.define(version: 2019_05_28_002118) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "dest"
     t.string "type"
-    t.string "sender"
+    t.string "dest"
     t.string "campaign"
-    t.integer "user_id"
-    #t.datetime "created_at", null: false
-    #t.datetime "updated_at", null: false
-    #t.index ["user_id"], name: "index_messages_on_user_id"
+    t.string "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
