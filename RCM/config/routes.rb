@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get '/static_pages/block_user/:id' => 'static_pages#block_user' ,:as => :block_user
   get '/static_pages/unblock_user/:id' => 'static_pages#unblock_user' ,:as => :unblock_user
 
+  get 'users/:user_id/campaigns/:id/manage_characters' => 'campaigns#manage_characters', :as => :manage_characters
+  post 'users/:user_id/campaigns/:id/add_character' => 'campaigns#add_character', :as => :add_character
+  post 'users/:user_id/campaigns/:id/remove_character/:c' => 'campaigns#remove_character', :as => :remove_character
+  
   resources :users do
     resources :characters
     resources :campaigns

@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_22_012547) do
+ActiveRecord::Schema.define(version: 2019_05_28_002118) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.integer "user_id"
+    t.text "master"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2019_05_22_012547) do
     t.string "race"
     t.string "info"
     t.integer "user_id"
+    t.integer "campaign_id"
   end
 
   create_table "messages", force: :cascade do |t|

@@ -1,0 +1,23 @@
+<% provide(:title, "Manage Characters") %>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <h1>Manage this campaign's characters</h1>
+ 
+      <table>
+        <tr>
+         <th>Character's Owner</th>
+          <th>Character's name</th>
+        </tr>
+
+        <% @characters.each do |c| %>
+        <tr>
+        	<td><%= c.user_id  %></td> <!-- Probably need to add column to characters with username of the owner -->
+        	<td><%= c.name %></td>
+        	<td><%= button_to 'Remove', remove_character_path(current_user, @campaign, c) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </body>
+</html>

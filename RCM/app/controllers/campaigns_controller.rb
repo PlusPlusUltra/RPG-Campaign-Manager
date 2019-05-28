@@ -1,6 +1,6 @@
 class CampaignsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :check
+	before_action :check, except: [:show]
 	
 	def index
 		@user = User.find(params[:user_id])
@@ -10,6 +10,7 @@ class CampaignsController < ApplicationController
 	def show
 		@user = User.find(params[:user_id])
 		@campaign = Campaign.find(params[:id])
+		@characters = @campaign.characters
 	end
 	
 	def new
@@ -25,6 +26,7 @@ class CampaignsController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
 		@campaign = current_user.campaigns.new(campaign_params)
+		@campaign.master = current_user.username
 
 		if @campaign.save
 			redirect_to user_campaign_path(@user, @campaign)
@@ -50,6 +52,33 @@ class CampaignsController < ApplicationController
 		@campaign.destroy
 
 		redirect_to user_campaigns_path(@user)
+	end
+
+	def manage_characters
+		@user = User.find(params[:user_id])
+		@campaign = @user.campaigns.find(params[:id])
+		@characters = @campaign.characters
+	end
+
+	def remove_character
+		@user = User.find(params[:user_id])
+		@campaign = @user.campaigns.find(params[:id])
+		@characters = @campaign.characters
+		@characters.delete(params[:c])
+
+		redirect_to manage_characters_path
+	end
+
+	#This is just a proof of concept. It works but it needs changes. Also it needs a check to
+	#see to whom the character belogns to
+	def add_character
+		@user=User.find(params[:user_id])
+		@campaign = @user.campaigns.find(params[:id])
+		@owner = User.find(2)
+		@character_to_add = @owner.characters.find(1)
+		@campaign.characters << @character_to_add
+
+		redirect_to manage_characters_path
 	end
 
 	private def campaign_params

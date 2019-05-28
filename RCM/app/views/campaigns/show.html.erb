@@ -4,6 +4,11 @@
 <html>
 
 <body>
+    <p>
+      <strong>Master:</strong>
+      <%= @campaign.master %>
+    </p>
+
 		<p>
   		<strong>Title:</strong>
   		<%= @campaign.title %>
@@ -13,6 +18,34 @@
   		<strong>Description:</strong>
   		<%= @campaign.description %>
 		</p>
+
+    <% if (current_user.username == @campaign.master) %>
+    <p>
+      <table>
+        <tr>
+         <th>Character's Owner</th>
+          <th>Character's name</th>
+        </tr>
+
+        <% @characters.each do |c| %>
+        <tr>
+          <td><%= c.user_id  %></td>
+          <td><%= c.name %></td>
+        </tr>
+        <% end %>
+      </table>
+    </p>
+    <% end %>
+
+    <p>
+      <%= button_to 'Add Character', add_character_path %> <!-- This was mostly for testing -->
+    </p>
+    
+    <% if (current_user.username == @campaign.master) %>
+      <p>
+        <%= button_to 'Manage Characters', manage_characters_path, method: :get %>
+      </p>
+    <% end %>
 
 		<p>
       <%= button_to 'Back to My Campaigns', user_campaigns_path, method: :get %>
