@@ -80,6 +80,32 @@ class CampaignsController < ApplicationController
 
 		redirect_to manage_characters_path
 	end
+	def accept_invite
+		@user = Campaign.getUserer
+		
+	end
+	def inviter
+		@user=User.find(params[:user_id])
+		@campaign = @user.campaigns.find(params[:id])
+		Campaign.setLast(@campaign.title)
+		Campaign.setLastId(@campaign.id)
+		redirect_to new_user_invite_path
+	end
+	#helper_method :invite
+	
+	def accept
+		#@owner = User.find(params[:user_id])
+		
+		@invite = Invite.find(params[:id])
+		@owner = @User.find(@invite.destid)
+		@sender = User.find(@invite.senderid)
+		@campaign = Campaign.find(@invite.campaignid)
+		@character_to_add = @owner.characters.find(1)
+		@campaign.characters << @character_to_add
+		destroy
+	end
+	#helper_method :accept
+
 
 	private def campaign_params
     params.require(:campaign).permit(:title, :description)

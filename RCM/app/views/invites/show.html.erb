@@ -1,0 +1,41 @@
+<% provide(:title, "Invite") %>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <p> Accept invite?</p>
+
+		<p>
+  		<strong>campaign:</strong>
+  		<%= @invite.campaign %>
+		</p>
+
+		<p>
+  		<strong>From:</strong>
+  		<%= @invite.sender %>
+		</p>
+		<p>
+		<strong>From:</strong>
+  		<%= @invite.senderid %>
+		</p>
+		<p>
+		<strong>To:</strong>
+  		<%= @invite.destid %>
+		</p>
+		<p>
+		<%= button_to 'Accept'%>
+      <%= button_to 'Back to My Invites', user_invites_path, method: :get %>
+  	</p>
+
+
+    <p>
+      <%= button_to 'Delete', user_invite_path(@user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </p>
+  	
+    <br>
+	</body>
+</html>

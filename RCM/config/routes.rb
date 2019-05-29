@@ -15,11 +15,15 @@ Rails.application.routes.draw do
   get 'users/:user_id/campaigns/:id/manage_characters' => 'campaigns#manage_characters', :as => :manage_characters
   post 'users/:user_id/campaigns/:id/add_character' => 'campaigns#add_character', :as => :add_character
   post 'users/:user_id/campaigns/:id/remove_character/:c' => 'campaigns#remove_character', :as => :remove_character
-  
+  post 'users/:user_id/campaigns/:id' => 'campaigns#inviter', :as => :inviter#
+  post 'users/:user_id/invites/:id' => 'invites#accept', :as => :accept#
+  #get '/static_pages/help' =>'campaigns#accept', :as => :accept#
+
   resources :users do
     resources :characters
     resources :campaigns
     resources :messages
+    resources :invites
 
   end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

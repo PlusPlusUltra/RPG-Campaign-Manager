@@ -1,0 +1,32 @@
+<% provide(:title, "Received invites") %>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <h1>Invites</h1>
+ 
+      <br>
+
+      <table>
+        <tr>
+         
+        </tr>
+ 
+        <% @invites.each do |invite| %>
+        <tr>
+          <td> Invite from <%= invite.sender %></td>
+          <td> To join <%= invite.campaign %></td>
+          
+          <td><%= link_to 'Answer', user_invite_path(current_user, invite) %></td>
+          <td><%= link_to 'Delete', user_invite_path(current_user, invite),
+              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    <br>
+    <%= button_to 'Back', root_path, method: :get %>
+    <br>
+    
+  </body>
+</html>

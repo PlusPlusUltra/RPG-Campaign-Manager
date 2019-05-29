@@ -18,6 +18,7 @@
         <tr>
           <td><%= campaign.title %></td>
           <td><%= campaign.description %></td>
+          <td><%= button_to 'Invite', user_campaign_path(current_user,campaign), method: :post %></td>
           <td><%= button_to 'Show', user_campaign_path(current_user, campaign), method: :get %></td>
           <td><%= button_to 'Edit', edit_user_campaign_path(current_user, campaign), method: :get %></td>
           <td><%= button_to 'Delete', user_campaign_path(current_user, campaign),
