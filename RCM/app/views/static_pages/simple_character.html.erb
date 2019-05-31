@@ -4,9 +4,53 @@
   
   <body>
     <h1>This is an example of how you can do with RPG Campaign Manager</h1>
-    <p>Placeholder for PG 1</p>
-    <p>Placeholder for PG 2</p>
-    <p>Placeholder for PG 3</p>
+    
+     <table >
+        <tr>
+         <th>Name</th>
+          <th>Level</th>
+          <th>Race</th>
+          <th>Class</th>
+          <th>Info</th>
+        </tr>
+ 
+        <tr>
+          <td> Chronos </td>
+          <td> 6 </td>
+          <td>Elfo</td>
+          <td>Barbaro</td>
+          <td><textarea readonly="true"></textarea></td>
+          <td><%= link_to ' Show '  %></td>
+          <td><%= link_to 'Edit '  %></td>
+          <td><%= link_to 'Delete ' %></td>
+        </tr>
+
+        <tr>
+          <td> Rodos </td>
+          <td> 1 </td>
+          <td>Umano</td>
+          <td>Bardo</td>
+          <td><textarea readonly="true"></textarea></td>
+          <td><%= link_to ' Show '  %></td>
+          <td><%= link_to 'Edit ' %></td>
+          <td><%= link_to 'Delete ' %></td>
+        </tr>
+
+        <tr>
+          <td> Zeus </td>
+          <td> 15 </td>
+          <td>Nano</td>
+          <td>Mago</td>
+          <td><textarea readonly="true"></textarea></td>
+          <td><%= link_to ' Show '  %></td>
+          <td><%= link_to 'Edit '  %></td>
+          <td><%= link_to 'Delete ' %></td>
+        </tr>
+
+      </table>
+
+
+
 	<p><%= link_to "Back to index page", root_url%><br /></p>
 
     <p><%= link_to "Log in", new_user_session_url%><br /></p>
