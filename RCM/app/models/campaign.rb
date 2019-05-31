@@ -1,6 +1,8 @@
 class Campaign < ApplicationRecord
 	belongs_to :user, optional: true
-	has_many :characters
+	has_many :characters, dependent: :destroy
+	validates :title, presence: true
+	validates :description, presence: true
 	@@lastC = ""
 	def self.setLast (lastCa)
 		@@lastC = lastCa

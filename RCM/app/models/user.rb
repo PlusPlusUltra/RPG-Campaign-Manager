@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
         :omniauthable, :omniauth_providers => [:google_oauth2],
         authentication_keys: [:login]
     
-    has_many :characters
-    has_many :campaigns
+    has_many :characters, dependent: :destroy
+    has_many :campaigns, dependent: :destroy
     has_many :messages
     has_many :invites
 
@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
  		super && !self.block
 	end
 
-    validates :email, uniqueness: true
-    validates :username, uniqueness: { case_sensitive: false }
+    validates :email, uniqueness: true, presence: true
+    validates :username, uniqueness: { case_sensitive: false }, presence: true
 
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 

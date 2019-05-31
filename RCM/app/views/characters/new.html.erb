@@ -31,12 +31,12 @@
     
     <p>
       <%= label_tag(:race, "Race") %>
-      <%= form.select :race, ['race1', 'race2']%>
+      <%= form.select :race, ['race1', 'race2'], include_blank: true %>
     </p>
 
     <p>
       <%= label_tag(:class_type, "Class") %>
-      <%= form.select :class_type, ['class1', 'class2']%>
+      <%= form.select :class_type, ['class1', 'class2'], include_blank: true %>
     </p>
 
     <p>
