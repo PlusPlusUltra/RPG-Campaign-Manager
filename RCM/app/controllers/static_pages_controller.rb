@@ -41,7 +41,7 @@ class StaticPagesController < ApplicationController
 private 
 
 	def check
-		if (params[:action] == "index" || params[:action] == "simple_character") && user_signed_in?
+		if (params[:action] == "index") && user_signed_in?
 			
 			redirect_to static_pages_home_url
 		end
