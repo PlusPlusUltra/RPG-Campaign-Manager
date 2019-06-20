@@ -47,10 +47,12 @@
       </p>
     <% end %>
 
-		<p>
+	<p>
       <%= button_to 'Back to My Campaigns', user_campaigns_path, method: :get %>
   	</p>
-
+	<p>
+      <%= button_to 'New session event', new_event_path, method: :get %>
+  	</p>
     <p>
       <%= button_to 'Edit', edit_user_campaign_path(@user), method: :get %>
     </p>

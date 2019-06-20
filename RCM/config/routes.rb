@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   post 'users/:user_id/campaigns/:id' => 'campaigns#inviter', :as => :inviter#
   post 'users/:user_id/invites/:id' => 'invites#accept', :as => :accept#
   #get '/static_pages/help' =>'campaigns#accept', :as => :accept#
+  get '/callback', to: 'events#callback', as: 'callback'
 
+	
+  resources :events
+	
   resources :users do
     resources :characters
     resources :campaigns

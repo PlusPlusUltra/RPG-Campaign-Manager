@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_29_030738) do
+ActiveRecord::Schema.define(version: 2019_06_20_025320) do
 
   create_table "campaigns", force: :cascade do |t|
     t.string "title"
@@ -27,6 +27,21 @@ ActiveRecord::Schema.define(version: 2019_05_29_030738) do
     t.string "info"
     t.integer "user_id"
     t.integer "campaign_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "start_day"
+    t.integer "start_month"
+    t.integer "start_year"
+    t.integer "start_hour"
+    t.integer "start_minute"
+    t.integer "end_day"
+    t.integer "end_month"
+    t.integer "end_year"
+    t.integer "end_hour"
+    t.integer "end_minute"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "invites", force: :cascade do |t|

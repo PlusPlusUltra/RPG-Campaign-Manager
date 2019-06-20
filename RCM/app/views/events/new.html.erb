@@ -1,0 +1,49 @@
+<% provide(:title, "Session event!") %>
+<html>
+  <body>
+
+    
+
+    <%= form_with scope: :event, url: events_path do |form| %>
+    <p>
+      <%= number_field(:event, :start_day, in: 1..31, step: 1) %>
+      <%= form.label :start_day%> <br>
+    
+	  <%= number_field(:event, :start_month, in: 1..12, step: 1) %>
+      <%= form.label :start_month%> <br>
+   
+      <%= number_field(:event, :start_year, in: 2019..2030, step: 1) %>
+
+      <%= form.label :start_year%> <br>
+    </p>
+    <p>
+      <%= number_field(:event, :start_hour, in: 1..24, step: 1) %>
+      <%= form.label :start_hour%> <br>
+    
+      <%= number_field(:event, :start_minute, in: 1..60, step: 1) %>
+      <%= form.label :start_minute%> <br>
+    </p>
+    <p>
+      <%= number_field(:event, :end_day, in: 1..31, step: 1) %>
+      <%= form.label :end_day%> <br>
+    
+      <%= number_field(:event, :end_month, in: 1..12, step: 1) %>
+      <%= form.label :end_month%> <br>
+    
+      <%= number_field(:event, :end_year, in: 2019..2030, step: 1) %>
+      <%= form.label :end_year%> <br>
+    </p>
+    <p>
+      <%= number_field(:event, :end_hour, in: 1..24, step: 1) %>
+      <%= form.label :end_hour%> <br>
+    
+      <%= number_field(:event, :end_minute, in: 1..60, step: 1) %>
+      <%= form.label :end_minute%> <br>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+    <% end %>
+
+  </body>
+</html>

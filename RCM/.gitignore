@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+#ignore some staff for google calendar
+/app/controllers/secrets.json
+/app/controllers/events_controller.rb
