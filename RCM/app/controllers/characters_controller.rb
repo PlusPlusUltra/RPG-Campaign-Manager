@@ -52,6 +52,13 @@ class CharactersController < ApplicationController
 
 		redirect_to user_characters_path(@user)
 	end
+	
+	def export
+		@user = User.find(params[:user_id])
+		@character = @user.characters.find(params[:id])
+		@toEx = ""+@character.name.to_s + "," + @character.class.to_s + "," + @character.race.to_s+ ","+@character.info.to_s
+		Clipboard.copy(@toEx)
+	end
 
 	private def character_params
     params.require(:character).permit(:name, :lvl, :race, :class_type, :info)

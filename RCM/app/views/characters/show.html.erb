@@ -39,6 +39,10 @@
     <p>
       <%= button_to 'Edit', edit_user_character_path(@user), method: :get %> 
     </p>
+    
+    <p>
+      <%= button_to 'Export', method: :post %> 
+    </p>
 
     <p>
       <%= button_to 'Delete', user_character_path(@user),
