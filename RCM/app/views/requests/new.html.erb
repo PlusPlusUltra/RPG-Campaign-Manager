@@ -1,0 +1,43 @@
+<% provide(:title, "Send a request") %>
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <!--ERRORS-->
+    <% if @request.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@request.errors.count, "error") %>
+          </h2>
+          <ul>
+            <% @request.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_with scope: :request, url: user_requests_path do |form| %>
+    <p>
+		
+      <%= form.label :dest %><br>
+      <%= form.text_field :dest %>
+    </p>
+    <p>
+		
+      <%= form.label :campaign %><br>
+      <%= form.text_field :campaign %>
+    </p>
+    
+ 
+    <p>
+      <%= form.submit %>
+    </p>
+    <% end %>
+       
+    <%= button_to 'Back', user_requests_path, method: :get %>
+
+  </body>
+</html>

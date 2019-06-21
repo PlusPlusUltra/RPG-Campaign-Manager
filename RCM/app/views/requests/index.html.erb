@@ -1,0 +1,32 @@
+<% provide(:title, "Received requests") %>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <h1>Requests</h1>
+ 
+      <br>
+
+      <table>
+        <tr>
+         
+        </tr>
+ 
+        <% @requests.each do |request| %>
+        <tr>
+          <td> Request from <%= request.sender %></td>
+          <td><%= link_to 'New', new_user_request_path(current_user, request) %></td>
+          <td><%= link_to 'Answer', user_request_path(current_user, request) %></td>
+          <td><%= link_to 'Delete', user_request_path(current_user, request),
+              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    <br>
+    <td><%= button_to 'New', new_user_request_path(@user, @request), method: :get %></td>
+    <%= button_to 'Back', root_path, method: :get %>
+    <br>
+    
+  </body>
+</html>

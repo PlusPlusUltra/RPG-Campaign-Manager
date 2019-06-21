@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
     has_many :campaigns, dependent: :destroy
     has_many :messages
     has_many :invites
+    has_many :requests
 
     attr_accessor :login
 

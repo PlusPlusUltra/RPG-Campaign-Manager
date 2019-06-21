@@ -1,0 +1,41 @@
+<% provide(:title, "Request") %>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <p> Accept request?</p>
+
+		<p>
+  		<strong>campaign:</strong>
+  		<%= @request.campaign %>
+		</p>
+
+		<p>
+  		<strong>From:</strong>
+  		<%= @request.sender %>
+		</p>
+		<p>
+		<strong>From:</strong>
+  		<%= @request.senderid %>
+		</p>
+		<p>
+		<strong>To:</strong>
+  		<%= @request.destid %>
+		</p>
+		<p>
+		<%= button_to 'Accept'%>
+      <%= button_to 'Back to My Requests', user_requests_path, method: :get %>
+  	</p>
+
+
+    <p>
+      <%= button_to 'Delete', user_request_path(@user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </p>
+  	
+    <br>
+	</body>
+</html>
