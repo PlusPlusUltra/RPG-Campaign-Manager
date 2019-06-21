@@ -1,0 +1,41 @@
+<% provide(:title, "session planning") %>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <p> Accept invite?</p>
+
+
+		<p>
+  		<strong>Day:</strong>
+  		<%= @planner.day %>
+		</p>
+		<p>
+		<strong>Month:</strong>
+  		<%= @planner.month %>
+		</p>
+		<p>
+		<strong>Year:</strong>
+  		<%= @planner.year %>
+		</p>
+		<p>
+		<strong>Answer:</strong>
+  		<%= @planner.answer %>
+		</p>
+		<p>
+		<%= button_to 'Accept'%>
+      <%= button_to 'Back to session planning', user_planners_path, method: :get %>
+  	</p>
+
+
+    <p>
+      <%= button_to 'Delete', user_planner_path(@user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+    </p>
+  	
+    <br>
+	</body>
+</html>

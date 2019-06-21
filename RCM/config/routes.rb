@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/callback', to: 'events#callback', as: 'callback'
   post 'users/:user_id/characters/:id' => 'characters#export', :as  => :export
   post 'users/:user_id/requests/:id' => 'requests#accept', :as => :acceptI
+  post 'users/:user_id/planners/:id' => 'planners#accept', :as => :acceptP
 
 	
   resources :events
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
     resources :messages
     resources :invites
     resources :requests
+    resources :planners
 
   end 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

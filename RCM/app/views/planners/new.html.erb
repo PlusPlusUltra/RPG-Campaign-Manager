@@ -1,0 +1,48 @@
+<% provide(:title, "Session planning") %>
+<!DOCTYPE html>
+<html>
+  <body>
+
+    <!--ERRORS-->
+    <% if @planner.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@planner.errors.count, "error") %>
+          </h2>
+          <ul>
+            <% @planner.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_with scope: :planner, url: user_planners_path do |form| %>
+    <p>
+		
+      <%= form.label :dest %><br>
+      <%= form.text_field :dest %>
+    </p>
+    
+    <%= number_field(:planner, :day, in: 1..31, step: 1) %>
+      <%= form.label :day%> <br>
+    
+	  <%= number_field(:planner, :month, in: 1..12, step: 1) %>
+      <%= form.label :month%> <br>
+   
+      <%= number_field(:planner, :year, in: 2019..2030, step: 1) %>
+
+      <%= form.label :year%> <br>
+    
+ 
+    <p>
+      <%= form.submit %>
+    </p>
+    <% end %>
+       
+    <%= button_to 'Back', user_planners_path, method: :get %>
+
+  </body>
+</html>

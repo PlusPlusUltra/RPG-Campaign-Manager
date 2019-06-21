@@ -1,0 +1,42 @@
+<% provide(:title, "Session planning") %>
+<!DOCTYPE html>
+<html>
+  
+  <body>
+    <h1>Session planning</h1>
+ 
+      <br>
+
+      <table>
+        <tr>
+         
+        </tr>
+ 
+        <% @planners.each do |planner| %>
+        <tr>
+          <td> Invite from <%= planner.sender %> Answer: <%= planner.answer %></td>
+          
+          
+          <td><%= link_to 'Answer', user_planner_path(current_user, planner) %></td>
+          <td><%= link_to 'Delete', user_planner_path(current_user, planner),
+              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
+        </tr>
+        <% end %>
+        <% @myP.each do |planner| %>
+        <tr>
+          <td> Invite to <%= planner.dest %> on <%= planner.day %>/<%= planner.month %>/<%= planner.year %> answer: <%= planner.answer %></td>
+          
+          
+          <td><%= link_to 'Delete', user_planner_path(current_user, planner),
+              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    <br>
+    <td><%= button_to 'New', new_user_planner_path(@user, @planner), method: :get %></td>
+    <%= button_to 'Back', root_path, method: :get %>
+    <br>
+    
+  </body>
+</html>

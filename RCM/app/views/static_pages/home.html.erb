@@ -19,6 +19,9 @@
     <p>
       <%= button_to 'Requests', user_requests_path(current_user.id), method: :get %> 
     </p>
+    <p>
+      <%= button_to 'Session Planning', user_planners_path(current_user.id), method: :get %> 
+    </p>
 
     <p> <% if current_user.admin? %>
       	<input type="button" name="allUsers" value="All Users" onclick="location.href = 'show_all_users';">

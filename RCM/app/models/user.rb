@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     has_many :messages
     has_many :invites
     has_many :requests
+    has_many :planners
 
     attr_accessor :login
 

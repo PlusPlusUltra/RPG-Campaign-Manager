@@ -1,4 +1,15 @@
 FactoryGirl.define do
+  factory :planner do
+    sender "MyString"
+    dest "MyString"
+    senderid 1
+    destid 1
+    answer "MyString"
+    day 1
+    month 1
+    year 1
+    user nil
+  end
   factory :request do
     dest "MyString"
     campaign "MyString"
