@@ -4,14 +4,53 @@
   
   <body>
   	
-    <h1>Index page for scheduling user between login, registration and simple characters</h1>
+    <div class="row">
+        <div class="col-lg-8 col-md-6">
+          <h1 class="title text-white m-5">
+            RPG Campaign Manager
+          </h1>
+          <p class="subtitle text-white ml-5">Piccola descrizione   ed ut perspiciatis unde omnis iste natus error sit    voluptatem 
+            accusantium doloremque laudantium, totam rem aperiam eaque ipsa, 
+            quae ab illo inventore veritatis et quasi  architecto beatae vitae dicta sunt, explicabo. 
+          </p>
+
+          <%= link_to "View a sample character!", static_pages_simple_character_path, class:"btn btn-light m-5"%>
+        <!-- <button type="button" class="btn btn-light m-5">View a sample character!</button> -->
+        </div>
     
-    <p><%= link_to "Log in", new_user_session_url%><br /></p>
-
-	<p><%= link_to "Sign up", new_user_registration_url%> </p>
-
-    <p>
-      <input type="button" name="simpleCharacters" value="Simple Characters" onclick="location.href = 'static_pages/simple_character';">
-    </p>
+        <!-- <div class="col-lg-4 col-md-6 bg-white main-form pt-5">
+          <h2 class="text-center mt-5">Login</h2>
+          
+          <form class="mt-5 p-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+  
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+  
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div> -->
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <%= yield %>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key}" %>
+    <% end %>
   </body>
 </html>

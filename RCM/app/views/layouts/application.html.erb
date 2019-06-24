@@ -10,12 +10,54 @@
   </head>
 
   <body>
+    <div class="container-fluid bg-gradient overflow-auto">
+      <nav class="navbar navbar-expand-lg ">
+        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag "logo.png" , class: "logo"%>
+          <% end %>
+          <!-- <a class="navbar-brand" href="#"><img class="logo" src="img/logo.png"></a> -->
+          <ul class="navbar-nav mr-0 mt-2 mt-lg-0">
+            <% if user_signed_in? %>
+            <li class="nav-item active">
+                <%= link_to "Home", new_user_session_url, class: "nav-link" %><span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item active">
+                <%= link_to 'Logout',destroy_user_session_path, :method => :delete, class: "nav-link"%>
+              </li>
+            <% else %>
+              <li class="nav-item active">
+                <%= link_to "Login", new_user_session_url, class: "nav-link" %><span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "SignUp", new_user_registration_url, class: "nav-link"%>
+              </li>
+              <% end %>
+          </ul>
+        </div>
+      </nav>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <%= yield %>
     <% flash.each do |key, value| %>
       <%= content_tag :div, value, class: "flash #{key}" %>
     <% end %>
-    <% if user_signed_in? %>
-      [<%= link_to 'Logout',destroy_user_session_path, :method => :delete%>]
-    <% end %>
+
+  <footer class="page-footer font-small blue">
+
+    <!-- Copyright 
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
+    </div>
+    Copyright -->
+
+  </footer>
+
   </body>
 </html>

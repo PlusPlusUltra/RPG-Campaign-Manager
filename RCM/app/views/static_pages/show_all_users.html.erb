@@ -1,38 +1,39 @@
 <% provide(:title, "All Users") %>
 <!DOCTYPE html>
-<h1>Listing users</h1>
+<h1 class="text-center page-title">Listing All Users</h1>
+<hr>
  
 
- 
-  <% @users.each do |user| %>
-    <p> <strong> Email: </strong><%= user.email %><br />
-    <strong> Username: </strong><%= user.username %><br />
-    <strong> Role: </strong> <% if user.admin %>
-      Admin
-    <% else %>
-      User
-    <% end %> <br>
-    <% if user.block %>
-      This user is blocked
-    <% end %>
+  <% @users.each_slice(3) do |slice| %>
+    <div class="row">
+      <% slice.each do |user| %>
+        <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3"> 
+          <strong> Email: </strong><%= user.email %><br />
+          <strong> Username: </strong><%= user.username %><br />
+          <strong> Role: </strong> <% if user.admin %>
+            Admin
+          <% else %>
+            User
+          <% end %> <br>
+          <% if user.block %>
+            This user is blocked
+          <% end %>
 
-    <p> <%= button_to "View his characters", user_characters_path(user.id), method: :get %> </p>
+            <div class="text-center">
+              <p> <%= link_to "View his characters", user_characters_path(user.id), class: "btn  btn-outline-primary-bis waves-effect" %> </p>
 
-
-    <% if  !user.admin %>
-      <% if  !user.block %>
-        <%= button_to "Block User", block_user_path(user.id), method: :get %><br />
-      <% else%>
-        <%= button_to "Unblock User", unblock_user_path(user.id), method: :get %><br />
+              <% if  !user.admin %>
+                <% if  !user.block %>
+                  <p><%= link_to "Block User", block_user_path(user.id), class: "btn  btn-outline-primary-bis waves-effect mx-auto" %><br /></p>
+                <% else%>
+                  <p><%= link_to "Unblock User", unblock_user_path(user.id), class: "btn  btn-outline-primary-bis waves-effect" %><br /></p>
+                <% end %>
+                <p><%= link_to "Upgrade to Admin", change_role_path(user.id), class: "btn  btn-outline-primary-bis waves-effect" %><br /></p>
+              <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it" )||(user.email==current_user.email)%>
+                <p><%= link_to "Downgrade to User", change_role_path(user.id), class: "btn  btn-outline-primary-bis waves-effect" %><br /></p>
+              <% end %>
+            </div>
+        </div>
       <% end %>
-      <%= button_to "Upgrade to Admin", change_role_path(user.id), method: :get %><br />
-      <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it" )||(user.email==current_user.email)%>
-        <%= link_to("Downgrade to User", change_role_path(user.id)) %><br />
-    <% end %>
-    </p>
-    <hr>
+    </div>
   <% end %>
-
-  <p> <%= link_to "Home Page", static_pages_home_url%><br />
-    <%= button_to "Back", :back, method: :get %>
-  </p>

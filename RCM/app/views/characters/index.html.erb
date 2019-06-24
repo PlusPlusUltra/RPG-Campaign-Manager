@@ -3,38 +3,34 @@
 <html>
   
   <body>
-    <h1>All characters</h1>
- 
-      <%= button_to 'New Character', new_user_character_path, method: :get %>
-      <br>
+    <h1 class="text-center page-title">These Are Your Characters</h1>
+    <hr>
+      
+    <div class="text-center">
+      <%= link_to 'Create New Character', new_user_character_path, class: "btn  btn-outline-primary waves-effect" %>
+    </div>
+    <hr>
+  
+      <% @characters.each_slice(2) do |slice| %>
+        <div class="row">
+            <% slice.each do |character| %>
+              <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
 
-      <table>
-        <tr>
-         <th>Name</th>
-          <th>Level</th>
-          <th>Race</th>
-          <th>Class</th>
-          <th>Info</th>
-        </tr>
- 
-        <% @characters.each do |character| %>
-        <tr>
-          <td><%= character.name %></td>
-          <td><%= character.lvl %></td>
-          <td><%= character.race %></td>
-          <td><%= character.class_type %></td>
-          <td><%= character.info %></td>
-          <td><%= link_to 'Show', user_character_path(current_user, character) %></td>
-          <td><%= link_to 'Edit', edit_user_character_path(current_user, character) %></td>
-          <td><%= link_to 'Delete', user_character_path(current_user, character),
-              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
-        </tr>
+                <p><strong>Name: </strong> <%= character.name %> </p>
+                <p><strong>Level: </strong> <%= character.lvl %></p>
+                <p><strong>Race: </strong> <%= character.race %></p>
+                <p><strong>Class: </strong> <%= character.class_type %></p>
+                <p><strong>Info: </strong><%= character.info %></p>
+                <div class="text-center">
+                  <p><%= link_to 'Show', user_character_path(current_user, character), class: "btn  btn-outline-primary-bis waves-effect" %>
+                  <%= link_to 'Edit', edit_user_character_path(current_user, character), class: "btn  btn-outline-primary-bis waves-effect" %>
+                  <%= link_to 'Delete', user_character_path(current_user, character), data: { confirm: 'Are you sure?' } , :method => :delete,  class: "btn  btn-outline-primary-bis waves-effect" %></p>
+                </div>
+
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </table>
-
-    <br>
-    <%= button_to 'Back', root_path, method: :get %>
-    <br>
     
   </body>
 </html>

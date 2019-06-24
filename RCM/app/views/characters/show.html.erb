@@ -1,55 +1,51 @@
 <% provide(:title, "Character") %>
 
 <!DOCTYPE html>
-<html>
+  <h1 class="text-center page-title">Here's Your Character</h1>
 
-<body>
+  <div class="row">
+    <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
+		  <p>
+  		  <strong>Name:</strong>
+  		  <%= @character.name %>
+		  </p>
 
-    <p> Here's your character <%= @user.username %> </p>
-
-		<p>
-  		<strong>Name:</strong>
-  		<%= @character.name %>
-		</p>
-
-		<p>
-  		<strong>Level:</strong>
-  		<%= @character.lvl %>
-		</p>
+		  <p>
+  		  <strong>Level:</strong>
+  		  <%= @character.lvl %>
+		  </p>
  
-		<p>
-  		<strong>Race:</strong>
-  		<%= @character.race %>
-		</p>
+		  <p>
+  		  <strong>Race:</strong>
+  		  <%= @character.race %>
+		  </p>
 
-		<p>
-  		<strong>Class:</strong>
-  		<%= @character.class_type %>
-		</p>
+		  <p>
+  		  <strong>Class:</strong>
+  		  <%= @character.class_type %>
+		  </p>
 
-		<p>
-  		<strong>Info:</strong>
-  		<%= @character.info %>
-		</p>
+		  <p>
+  		  <strong>Info:</strong>
+  		  <%= @character.info %>
+		  </p>
 
-		<p>
-      <%= button_to 'Back to My Characters', user_characters_path, method: :get %>
-  	</p>
+      <div class="text-center">
 
-    <p>
-      <%= button_to 'Edit', edit_user_character_path(@user), method: :get %> 
-    </p>
-    
-    <p>
-      <%= button_to 'Export', method: :post %> 
-    </p>
+        <p>
+          <%= button_to 'Edit', edit_user_character_path(@user), class: "btn  btn-outline-primary-bis waves-effect" %> 
+        </p>
 
-    <p>
-      <%= button_to 'Delete', user_character_path(@user),
+        <p>
+          <%= button_to 'Delete', user_character_path(@user),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-    </p>
-  	
-    <br>
-	</body>
-</html>
+              data: { confirm: 'Are you sure?' }, class: "btn  btn-outline-primary-bis waves-effect" %>
+        </p>
+        
+		    <p>
+          <%= link_to 'Back to My Characters', user_characters_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+        </p>
+
+      </div>
+    </div>
+  </div>

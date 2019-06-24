@@ -1,55 +1,67 @@
 <% provide(:title, "Create a Character") %>
-<html>
-  <body>
+<!DOCTYPE html>
+  
 
-    <!--ERRORS-->
-    <% if @character.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@character.errors.count, "error") %>
-          </h2>
-          <ul>
-            <% @character.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+  <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
+    <h2 class="text-center mt-3">Create a New Character</h2>
 
     <%= form_with scope: :character, url: user_characters_path do |form| %>
-    <p>
-      <%= form.label :name %><br>
-      <%= form.text_field :name %>
-    </p>
-  
-    <p>
-      <%= form.label :lvl%> <br>
-      <%= number_field(:character, :lvl, in: 1..20, step: 1) %>
-    </p>
+
+      <div class="field">
+        <p>
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </p>
+      </div>
+      
+      <div class="field">
+        <p>
+          <%= form.label :lvl%>
+          <%= number_field(:character, :lvl, in: 1..20, step: 1) %>
+        </p>
+      </div>
     
-    <p>
-      <%= label_tag(:race, "Race") %>
-      <%= form.select :race, ['race1', 'race2'], include_blank: true %>
-    </p>
+      <div class="field">
+        <p>
+          <%= label_tag(:race, "Race") %>
+          <%= form.select :race, ['race1', 'race2'], include_blank: true %>
+        </p>
+      </div>
 
-    <p>
-      <%= label_tag(:class_type, "Class") %>
-      <%= form.select :class_type, ['class1', 'class2'], include_blank: true %>
-    </p>
+      <div class="field">
+        <p>
+          <%= label_tag(:class_type, "Class") %>
+          <%= form.select :class_type, ['class1', 'class2'], include_blank: true %>
+        </p>
+      </div>
 
-    <p>
-      <%= form.label :info %><br>
-      <%= form.text_area :info %>
-    </p>
+      <div class="field">
+        <p>
+          <%= form.label :info %><br>
+          <%= form.text_area :info %>
+        </p>
+      </div>
  
-    <p>
-      <%= form.submit %>
-    </p>
+      <div class="actions text-center">
+        <p>
+          <%= form.submit %>
+        </p>
+      </div>
+
+          <!--ERRORS-->
+      <% if @character.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@character.errors.count, "error") %>
+            </h2>
+            <ul>
+              <% @character.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+
     <% end %>
-
-    <%= button_to 'Back', user_characters_path, method: :get %>
-
-  </body>
-</html>

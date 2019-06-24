@@ -3,34 +3,31 @@
 <html>
   
   <body>
-    <h1>All campaigns</h1>
- 
-      <%= button_to 'New Campaign', new_user_campaign_path, method: :get %>
-      <br>
+    <h1 class="text-center page-title">All Your Campaigns</h1>
+    <hr>
+  
+    <div class="text-center">
+      <%= link_to 'Create New Campaign', new_user_campaign_path, class: "btn  btn-outline-primary waves-effect" %>
+    </div>
+    <hr>
 
-      <table>
-        <tr>
-         <th>Title</th>
-          <th>Description</th>
-        </tr>
- 
-        <% @campaigns.each do |campaign| %>
-        <tr>
-          <td><%= campaign.title %></td>
-          <td><%= campaign.description %></td>
-          <td><%= button_to 'Invite', user_campaign_path(current_user,campaign), method: :post %></td>
-          <td><%= button_to 'Show', user_campaign_path(current_user, campaign), method: :get %></td>
-          <td><%= button_to 'Edit', edit_user_campaign_path(current_user, campaign), method: :get %></td>
-          <td><%= button_to 'Delete', user_campaign_path(current_user, campaign),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+      <% @campaigns.each_slice(2) do |slice| %>
+        <div class="row">
+          <% slice.each do |campaign| %>
+            <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
+              <p><strong>Title: </strong> <%= campaign.title %></p>
+              <p><strong>Description: </strong><%= campaign.description %></p>
+              <div class="text-center">
+                
+                <p><%= link_to 'Show', user_campaign_path(current_user, campaign), class: "btn  btn-outline-primary-bis waves-effect" %>
+                  <%= link_to 'Edit', edit_user_campaign_path(current_user, campaign), class: "btn  btn-outline-primary-bis waves-effect" %></p>
+
+                <p>
+                  <%= link_to 'Invite', user_campaign_path(current_user,campaign), method: :post, class: "btn  btn-outline-primary-bis waves-effect" %>
+                  <%= link_to 'Delete', user_campaign_path(current_user, campaign), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-outline-primary-bis waves-effect" %>
+                </p>
+              </div>
+            </div>
         <% end %>
-      </table>
-
-    <br>
-    <%= button_to 'Back', root_path, method: :get %>
-    <br>
-    
-  </body>
-</html>
+      </div>
+    <% end %>

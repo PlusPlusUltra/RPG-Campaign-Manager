@@ -3,38 +3,51 @@
 <html>
   
   <body>
-    <h1>home page for logged user</h1>
-    <p>Hi <%= current_user.username%>! This is your homepage</p>
+    <h1 class="text-center page-title">Hi <%= current_user.username%>! This is your homepage.</h1>
     
-    <p>
-      <%= button_to 'My Characters', user_characters_path(current_user.id), method: :get %> 
-    </p>
+    <div class="row text-center home">
+      <div class="col-3">
+        <%= link_to 'My Characters', user_characters_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %>  
+      </div>
 
-    <p>
-      <%= button_to 'My Campaigns', user_campaigns_path(current_user.id), method: :get %> 
-    </p>
-     <p>
-      <%= button_to 'Invites', user_invites_path(current_user.id), method: :get %> 
-    </p>
-    <p>
-      <%= button_to 'Requests', user_requests_path(current_user.id), method: :get %> 
-    </p>
-    <p>
-      <%= button_to 'Session Planning', user_planners_path(current_user.id), method: :get %> 
-    </p>
+      <div class= "col-3">
+        <%= link_to 'My Campaigns', user_campaigns_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+      </div>
+        
+      <div class= "col-3">
+        <%= link_to 'Invites', user_invites_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+      </div>
 
-    <p> <% if current_user.admin? %>
-      	<input type="button" name="allUsers" value="All Users" onclick="location.href = 'show_all_users';">
-    	<% end %>
-    </p>
+      <div class="col-3">
+          <%= link_to 'Requests', user_requests_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+      </div>
+    </div>
 
-    <p> <% if current_user.admin? %>
-      	<input type="button" name="allCampaings" value="All Campaigns" onclick="location.href = 'show_all_campaigns';">
-    	<% end %>
-    </p>
+    <div class="row text-center home">
 
-    <p>
-      <input type="button" name="profile" value="View Profile" onclick="location.href = 'profile';">
-  	</p>
+      <div class="col-3">
+        <%= link_to "View Profile", static_pages_profile_path, class: "btn  btn-outline-primary waves-effect"%>
+      </div>
+
+      <div class="col-3">
+        <% if current_user.admin? %>
+          <%= link_to "All Users", static_pages_show_all_users_path ,class: "btn  btn-outline-primary waves-effect" %>
+        <% end %>
+      </div>
+
+      <div class="col-3">
+        <% if current_user.admin? %>
+          <%= link_to "All Campaigns", static_pages_show_all_campaigns_path, class: "btn  btn-outline-primary waves-effect" %>
+        <% end %>
+      </div>
+
+      <div class="col-3">
+          <%= link_to 'Session Planning', user_planners_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+      </div>
+
+    </div>
+      
+    </div>
+
   </body>
 </html>

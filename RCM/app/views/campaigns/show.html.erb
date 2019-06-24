@@ -1,68 +1,63 @@
 <% provide(:title, "Campaign") %>
 
 <!DOCTYPE html>
-<html>
-
-<body>
-    <p>
-      <strong>Master:</strong>
-      <%= @campaign.master %>
-    </p>
-
-		<p>
-  		<strong>Title:</strong>
-  		<%= @campaign.title %>
-		</p>
-
-		<p>
-  		<strong>Description:</strong>
-  		<%= @campaign.description %>
-		</p>
-
-    <% if (current_user.username == @campaign.master) %>
-    <p>
-      <table>
-        <tr>
-         <th>Character's Owner</th>
-          <th>Character's name</th>
-        </tr>
-
-        <% @characters.each do |c| %>
-        <tr>
-          <td><%= c.user_id  %></td>
-          <td><%= c.name %></td>
-        </tr>
-        <% end %>
-      </table>
-    </p>
-    <% end %>
-
-    <p>
-      <%= button_to 'Add Character', add_character_path %> <!-- This was mostly for testing -->
-    </p>
+  <h1 class="text-center page-title">Here's Your Campaign</h1>
     
-    <% if (current_user.username == @campaign.master) %>
-      <p>
-        <%= button_to 'Manage Characters', manage_characters_path, method: :get %>
-      </p>
-    <% end %>
+    <div class="row">
+      <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
 
-	<p>
-      <%= button_to 'Back to My Campaigns', user_campaigns_path, method: :get %>
-  	</p>
-	<p>
-      <%= button_to 'New session event', new_event_path, method: :get %>
-  	</p>
-    <p>
-      <%= button_to 'Edit', edit_user_campaign_path(@user), method: :get %>
-    </p>
+        <p>
+          <strong>Master:</strong>
+          <%= @campaign.master %>
+        </p>
 
-    <p>
-      <%= button_to 'Delete', user_campaign_path(@user),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-    </p>
-  	
-    <br>
-	</body>
-</html>
+		    <p>
+  		    <strong>Title:</strong>
+  		    <%= @campaign.title %>
+		    </p>
+
+		    <p>
+  		    <strong>Description:</strong>
+  		    <%= @campaign.description %>
+		    </p>
+
+        <% if (current_user.username == @campaign.master) %>
+          <p>
+            <table>
+              <tr>
+                <th>Character's Owner</th>
+                <th>Character's name</th>
+              </tr>
+
+              <% @characters.each do |c| %>
+                <tr>
+                  <td><%= c.user_id  %></td>
+                  <td><%= c.name %></td>
+                </tr>
+              <% end %>
+            </table>
+          </p>
+        <% end %>
+
+
+        <div class="text-center">
+          <p>
+            <%= link_to 'Add Character', add_character_path, class: "btn  btn-outline-primary-bis waves-effect" %> <!-- This was mostly for testing -->
+    
+            <% if (current_user.username == @campaign.master) %>
+              <%= link_to 'Manage Characters', manage_characters_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+            <% end %>
+          </p>
+        </div>
+
+        <div class="text-center">
+		      <p>
+            <%= link_to 'Back to My Campaigns', user_campaigns_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+
+            <%= link_to 'Edit', edit_user_campaign_path(@user), class: "btn  btn-outline-primary-bis waves-effect" %>
+
+            <%= link_to 'Delete', user_campaign_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-outline-primary-bis waves-effect" %>
+          </p>
+        </div>
+      </div>
+    </div>

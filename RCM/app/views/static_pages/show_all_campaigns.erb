@@ -1,17 +1,21 @@
 <% provide(:title, "All Campaigns") %>
 <!DOCTYPE html>
-<h1>Listing campaigns</h1>
-
+<h1 class="text-center page-title">Listing All Campaigns</h1>
+<hr>
  
   <% @users.each do |user| %>
-    <strong> Username: </strong><%= user.username %><br>
-      <br>
-    <% user.campaigns.each do |campaign| %>
-      <strong> Title: </strong><%= campaign.title %><br>
-      <strong> Description: </strong><%= campaign.description %><br>
-      <%= button_to "View this campaign", user_campaign_path(user.id, campaign.id), method: :get %>
-      <br>
-    <% end %><hr />
+    <div class="text-center page-title-bis"><strong> Username: </strong><%= user.username %></div><br>
+    <% user.campaigns.each_slice(2) do |slice| %>
+      <div class="row">
+        <% slice.each do |campaign| %>
+          <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3 text-center"> 
+            <p><strong> Title: </strong><%= campaign.title %></p><br>
+            <p><strong> Description: </strong><%= campaign.description %></p><br>
+            <p><%= link_to "View this campaign", user_campaign_path(user.id, campaign.id), class: "btn  btn-outline-primary-bis waves-effect" %></p>
+            <br>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <hr>
   <% end %>
-
-  <p><%= link_to "Home Page", static_pages_home_url%><br /></p>

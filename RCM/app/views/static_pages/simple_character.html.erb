@@ -3,61 +3,36 @@
 <html>
   
   <body>
-    <h1>This is an example of how you can do with RPG Campaign Manager</h1>
+    <h1 class="text-center page-title">These are examples of the characters you can create with RPG Campaign Manager</h1>
     
-     <table >
-        <tr>
-         <th>Name</th>
-          <th>Level</th>
-          <th>Race</th>
-          <th>Class</th>
-          <th>Info</th>
+    <div class="row">
+      <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
+        <p><strong>Name: </strong> Chronos <br /></p>
+        <p><strong>Level: </strong> 6 <br /></p>
+        <p><strong>Race: </strong> Elf <br /></p>
+        <p><strong>Class: </strong> Barbarian <br /></p>
+        <p><strong>Info: </strong>  As most elves, Chronos connects everything that happens to me to a grand, cosmic plan. He often gets lost in his own thoughts, becoming oblivious to his surroundings. But a dark and mysterious past, means He harbors dark, bloodthirsty thoughts that his isolation and meditation failed to quell.</p>
         </tr>
- 
-        <tr>
-          <td> Chronos </td>
-          <td> 6 </td>
-          <td>Elfo</td>
-          <td>Barbaro</td>
-          <td><textarea readonly="true" cols=40 rows=5>Nasce nel palazzo di una nobile casata elfica, e vive una giovinezza agiata. È il figlio del suo capoclan, ed è abituato ad avere tutto ciò che desidera: gli abiti più belli, le armi più costose, e i precettori migliori. Dai suoi insegnanti impara i rudimenti della magia, delle lettere, della poesia, della storia, mentre il suo maestro d’armi gli insegna i passi di base del “canto della lama”, la più difficile tecnica di scherma elfica. Sicuro di se e orgoglioso del suo lignaggio Chronos pensa di abbandonare la propria casa per girare il mondo; al rifiuto dei suoi genitori decide di scappare di nascosto dopo aver rubato dall’armeria del palazzo la corazza migliore e la spada di suo padre. Passati alcuni giorni si imbatte in una banda di ladri, che lo stendono in pochi minuti rubandogli tutto. Chronos, tradito dalla sua stessa spacconeria, impara la lezione d’umiltà.</textarea></td>
-          <td><%= link_to ' Show '  %></td>
-          <td><%= link_to 'Edit '  %></td>
-          <td><%= link_to 'Delete ' %></td>
-        </tr>
+      </div>
 
-        <tr>
-          <td> Rodos </td>
-          <td> 1 </td>
-          <td>Hobbit</td>
-          <td>Ladro</td>
-          <td><textarea readonly="true" cols=40 rows=5>La vita di Rodos è stata segnata da alcuni problemi di memoria. Sin da ragazzino aveva la simpatica abitudine di prendere le cose degli altri, infilarsi dove non doveva, nascondersi per prendere alle spalle i suoi parenti, che ogni volta finivano per sfiorare l’infarto. Dopo anni di questi “scherzi burloni” sempre più elaborati e divertenti (per Rodos ovviamente), i suoi fratelli decisero di menarlo un po’. Durante il pestaggio Rodos cade di testa contro un masso di li comincia a diventare svanito e a dimenticarsi le cose da un momento all’altro. Un giorno cercando di tornare a casa, convinto di seguire la strada giusta, si allontana ancora di più. Non trovando il suo villaggio prende un nuovo sentiero, e pur non conoscendo i luoghi che visita si convince di essere sulla strada giusta, e di conoscere alla perfezione ogni luogo che incontra. Da diversi mesi viaggia di città in città convinto di essere sulla strada di casa.</textarea></td>
-          <td><%= link_to ' Show '  %></td>
-          <td><%= link_to 'Edit ' %></td>
-          <td><%= link_to 'Delete ' %></td>
-        </tr>
+      <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
+        <p><strong>Name: </strong> Rodos <br /></p>
+        <p><strong>Level: </strong> 1 <br /></p>
+        <p><strong>Race: </strong> Human <br /></p>
+        <p><strong>Class: </strong> Bard <br /></p>
+        <p><strong>Info: </strong>  Son of the most famous bard in the world, Rodos has been struggling to live up to the expectations society had for him. Now that his father died in battle he has no teacher anymore, but this means He is eager to prove himself and avenge his father.</p>
+      </div>
 
-        <tr>
-          <td> Zeus </td>
-          <td> 15 </td>
-          <td>Umano</td>
-          <td>Guerriero</td>
-          <td><textarea readonly="true" cols=40 rows=5>Zeus è il giovane figlio di un fabbro, e ha imparato dal padre l’arte di forgiare e maneggiare le armi. Con lo scoppio della guerra decide di mettersi al servizio di un ordine di cavalieri come soldato mercenario, un po’ perché affascinato dalle imprese dei paladini, un po’ nella speranza di girare il mondo e trovare armi magiche o particolari come quelle che custodisce suo padre. Durante la sua permanenza presso il castello dei cavalieri conosce Dargor, un sacerdote della dea Airmed, che diventa la sua guida spirituale e il suo maestro di vita. Da allora i due viaggiano insieme.</textarea></td>
-          <td><%= link_to ' Show '  %></td>
-          <td><%= link_to 'Edit '  %></td>
-          <td><%= link_to 'Delete ' %></td>
-        </tr>
+      <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
+        <p><strong>Name: </strong> Zeus <br /></p>
+        <p><strong>Level: </strong> 15 <br /></p>
+        <p><strong>Race: </strong> Dwarf <br /></p>
+        <p><strong>Class: </strong> Mage <br /></p>
+        <p><strong>Info: </strong>  Zeus was once part of the most powerful counsel of mages, but his once best friend, Atreus, decided he had enough of Zeus morals, and convinced the rest of the counsel to exile him. Zeus isn't bitter, because he has the good of realm at heart, and is ready to battle everything that is a menace.</p>
+      </div>
+    </div>
 
-      </table>
+    <div class="text-center pt-4"><%= link_to "Back to index page", root_url, class: "btn  btn-outline-primary waves-effect"%><br /></div>
 
-
-
-	<p><%= link_to "Back to index page", root_url%><br /></p>
-
-    <p><%= link_to "Log in", new_user_session_url%><br /></p>
-
-	<p><%= link_to "Sign up", new_user_registration_url%> </p>
-
-    <p>
-    </p>
   </body>
 </html>

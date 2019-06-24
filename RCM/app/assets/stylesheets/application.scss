@@ -11,3 +11,126 @@
  * It is generally better to create a new file per style scope.
  */
 @import "bootstrap";
+
+.bg-gradient{
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2e4383+0,09193a+100 */
+background: #2e4383; /* Old browsers */
+background: -moz-linear-gradient(top,  #2e4383 0%, #09193a 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #2e4383 0%,#09193a 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  #2e4383 0%,#09193a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e4383', endColorstr='#09193a',GradientType=0 ); /* IE6-9 */
+height: 100vh;
+}
+
+/*unused*/
+.main-form{
+	z-index: 999999999;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.container-fluid{
+    padding-bottom:30px
+}
+.navbar-light .navbar-toggler {
+    color: rgba(255,255,255,.5);
+    border-color: rgba(255,255,255,.1);
+}
+.nav-link{
+    color: white;
+}
+
+h1.title{
+	font-size: 60px;
+}
+p.subtitle {
+	font-size: 22px;
+}
+.navbar-brand{
+	width: 89%;
+}
+.navbar-nav {
+	z-index: 999999999999;
+}
+.logo{
+    max-width: 120px;   
+    height: auto;
+}
+.card{
+    height: auto;
+}
+
+/* Login Button */
+.loginBtn {
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 2px 15px 4px 46px;
+  border: none;
+  text-align: left;
+  line-height: 65px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
+}
+.loginBtn:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 100%;
+}
+.loginBtn:focus {
+  outline: none;
+}
+.loginBtn:active {
+  box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+}
+.loginBtn--google {
+  font-family: "Roboto", Roboto, arial, sans-serif;
+  background: #4285F4;
+}
+.loginBtn--google:before {
+  border-right: #2172c1 1px solid;
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 2px no-repeat;
+}
+.loginBtn--google:hover,
+.loginBtn--google:focus {
+  background: #4285F4;
+}
+/*End of login button*/
+
+.btn-outline-primary{
+    color: #ffffff;
+    border-color: #ffffff;
+}
+.btn-outline-primary-bis{
+    color: #4285F4;
+    border-color: #4285F4;
+}
+.btn{
+    border-radius: 0rem;
+}
+
+.home{
+    padding-top: 6.25rem;
+    padding-bot: 3.125rem;
+}
+
+.page-title{
+    font-family: "Roboto", Roboto, arial, sans-serif;
+    color: #ffffff;
+    padding-top: 2rem;
+    font-size: 26px;
+}
+.page-title-bis{
+    font-family: "Roboto", Roboto, arial, sans-serif;
+    color: #ffffff;
+    padding-top: 2rem;
+    font-size: 18px;
+}

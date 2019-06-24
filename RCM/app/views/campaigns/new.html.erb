@@ -1,7 +1,5 @@
 <% provide(:title, "Create a Campaign") %>
 <!DOCTYPE html>
-<html>
-  <body>
 
     <!--ERRORS-->
     <% if @campaign.errors.any? %>
@@ -18,25 +16,44 @@
         </div>
       </div>
     <% end %>
+  <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
+    <h2 class="text-center mt-3 pb-3">Create a New Campaign</h2>
+      <%= form_with scope: :campaign, url: user_campaigns_path do |form| %>
 
-    <%= form_with scope: :campaign, url: user_campaigns_path do |form| %>
-    <p>
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-    </p>
-  
+        <div class="field">
+          <p>
+            <%= form.label :title %>
+            <%= form.text_field :title %>
+          </p>
+        </div>
 
-    <p>
-      <%= form.label :description %><br>
-      <%= form.text_area :description %>
-    </p>
- 
-    <p>
-      <%= form.submit %>
-    </p>
-    <% end %>
+        <div class="field">
+          <p>
+            <%= form.label :description %><br>
+            <%= form.text_area :description %>
+          </p>
+        </div>
 
-    <%= button_to 'Back', user_campaigns_path, method: :get %>
+        <div class="actions text-center">
+          <p>
+            <%= form.submit %>
+          </p>
+        </div>
+      <% end %>
 
-  </body>
-</html>
+      <!--ERRORS-->
+      <% if @campaign.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@campaign.errors.count, "error") %>
+            </h2>
+            <ul>
+              <% @campaign.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
