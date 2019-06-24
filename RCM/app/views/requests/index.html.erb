@@ -3,30 +3,39 @@
 <html>
   
   <body>
-    <h1>Requests</h1>
- 
-      <br>
+    <h1 class="text-center page-title">Requests</h1> 
+      <hr>
 
-      <table>
-        <tr>
-         
-        </tr>
+      <div class="text-center">
+        <%= link_to 'Send a New Request', new_user_request_path(@user, @request), class: "btn  btn-outline-primary waves-effect" %>
+      </div>
+
+      <hr>
+      <table class="table table-bordered">
+        <caption>Requests Received</caption>
+        <thead>
+          <tr>
+            <th scope="col">Request From</th>
+            <th scope="col">Answer</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
  
-        <% @requests.each do |request| %>
-        <tr>
-          <td> Request from <%= request.sender %></td>
-          <td><%= link_to 'New', new_user_request_path(current_user, request) %></td>
-          <td><%= link_to 'Answer', user_request_path(current_user, request) %></td>
-          <td><%= link_to 'Delete', user_request_path(current_user, request),
-              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
-        </tr>
-        <% end %>
+        <tbody>
+          <% @requests.each do |request| %>
+            <tr class="text-center">
+              <td> <%= request.sender %></td>
+              <td><%= link_to 'Answer', user_request_path(current_user, request), class: "btn  btn-outline-primary waves-effect" %></td>
+              <td><%= link_to 'Delete', user_request_path(current_user, request),
+                  data: { confirm: 'Are you sure?' } , :method => :delete,class: "btn  btn-outline-primary waves-effect" %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
 
     <br>
-    <td><%= button_to 'New', new_user_request_path(@user, @request), method: :get %></td>
-    <%= button_to 'Back', root_path, method: :get %>
-    <br>
-    
+
+    <!--<td><%= link_to 'New', new_user_request_path(current_user, request) %></td>-->
+    <!--<td><%= button_to 'New', new_user_request_path(@user, @request), method: :get %></td>-->    
   </body>
 </html>

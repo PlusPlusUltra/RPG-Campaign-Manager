@@ -3,30 +3,33 @@
 <html>
   
   <body>
-    <h1>Invites</h1>
+    <h1 class="text-center page-title">Invites</h1>
+    <hr>
  
-      <br>
-
-      <table>
-        <tr>
-         
-        </tr>
+      <table class="table table-bordered">
+        <caption>Invites Received</caption>
+        <thead>
+          <tr>
+            <th scope="col">Invite From</th>
+            <th scope="col">Campaign's Title</th>
+            <th scope="col">Answer</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
  
+        <tbody>
         <% @invites.each do |invite| %>
-        <tr>
-          <td> Invite from <%= invite.sender %></td>
-          <td> To join <%= invite.campaign %></td>
+          <tr class="text-center">
+            <td><%= invite.sender %></td>
+            <td><%= invite.campaign %></td>
           
-          <td><%= link_to 'Answer', user_invite_path(current_user, invite) %></td>
-          <td><%= link_to 'Delete', user_invite_path(current_user, invite),
-              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
-        </tr>
+            <td><%= link_to 'Answer', user_invite_path(current_user, invite), class: "btn  btn-outline-primary waves-effect" %></td>
+            <td><%= link_to 'Delete', user_invite_path(current_user, invite),
+              data: { confirm: 'Are you sure?' } , :method => :delete, class: "btn  btn-outline-primary waves-effect" %></td>
+          </tr>
         <% end %>
+      </tbody>
       </table>
-
-    <br>
-    <%= button_to 'Back', root_path, method: :get %>
-    <br>
     
   </body>
 </html>

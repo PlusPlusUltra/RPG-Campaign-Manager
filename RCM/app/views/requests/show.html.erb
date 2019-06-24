@@ -2,40 +2,55 @@
 
 <!DOCTYPE html>
 <html>
+  <body>
+    <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
+      <h2 class="text-center mt-3 pb-3">Accept the Request?  </h2>
 
-<body>
+		  <div class="field">
+        <p>
+  		    <strong>campaign:</strong>
+  		    <%= @request.campaign %>
+		    </p>
+      </div>
 
-    <p> Accept request?</p>
+      <div class="field">
+		    <p>
+  		    <strong>From:</strong>
+  		    <%= @request.sender %>
+		    </p>
+      </div>
 
-		<p>
-  		<strong>campaign:</strong>
-  		<%= @request.campaign %>
-		</p>
+		  <div class="field">
+        <p>
+		      <strong>From:</strong>
+          <%= @request.senderid %>
+		    </p>
+      </div>
 
-		<p>
-  		<strong>From:</strong>
-  		<%= @request.sender %>
-		</p>
-		<p>
-		<strong>From:</strong>
-  		<%= @request.senderid %>
-		</p>
-		<p>
-		<strong>To:</strong>
-  		<%= @request.destid %>
-		</p>
-		<p>
-		<%= button_to 'Accept'%>
-      <%= button_to 'Back to My Requests', user_requests_path, method: :get %>
-  	</p>
+		  <div class="field">
+        <p>
+		      <strong>To:</strong>
+  		    <%= @request.destid %>
+		    </p>
+      </div>
 
-
-    <p>
-      <%= button_to 'Delete', user_request_path(@user),
+      <div class="text-center">
+		    <p>
+          <%= link_to 'Accept',acceptI_path, method: :post, class: "btn  btn-outline-primary-bis waves-effect"%>
+          <%= link_to 'Decline', user_request_path(@user),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-    </p>
-  	
-    <br>
+              data: { confirm: 'Are you sure?' }, class: "btn  btn-outline-primary-bis waves-effect" %>
+              </p>
+      </div>
+
+      <hr>
+
+      <div class="text-center">
+        <p>
+          <%= link_to 'Back to My Requests', user_requests_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+        </p>
+      </div>
+    </div>
+
 	</body>
 </html>

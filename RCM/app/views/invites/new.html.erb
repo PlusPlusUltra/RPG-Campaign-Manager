@@ -3,36 +3,47 @@
 <html>
   <body>
 
-    <!--ERRORS-->
-    <% if @invite.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@invite.errors.count, "error") %>
-          </h2>
-          <ul>
-            <% @invite.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
-
-    <%= form_with scope: :invite, url: user_invites_path do |form| %>
-    <p>
-		
-      <%= form.label :dest %><br>
-      <%= form.text_field :dest %>
-    </p>
     
- 
-    <p>
-      <%= form.submit %>
-    </p>
-    <% end %>
-       
-    <%= button_to 'Back', user_invites_path, method: :get %>
+
+    <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
+      <h2 class="text-center mt-3 pb-3">New Invite</h2>
+      <%= form_with scope: :invite, url: user_invites_path do |form| %>
+          
+        <div class="field">
+          <p>
+            <strong><%= form.label :dest %></strong>
+            <%= form.text_field :dest %>
+          </p>
+        </div>
+    
+        <div class="actions text-center">
+          <p>
+            <%= form.submit %>
+          </p>
+        </div>
+      <% end %>
+      
+      <!--ERRORS-->
+      <% if @invite.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@invite.errors.count, "error") %>
+            </h2>
+            <ul>
+              <% @invite.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+      <hr>
+    
+      <div class="text-center">
+        <p><%= link_to 'Back', user_invites_path, class: "btn  btn-outline-primary-bis waves-effect" %></p>
+      </div>
+    </div>
 
   </body>
 </html>

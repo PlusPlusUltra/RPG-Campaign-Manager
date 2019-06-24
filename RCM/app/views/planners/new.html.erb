@@ -3,46 +3,66 @@
 <html>
   <body>
 
-    <!--ERRORS-->
-    <% if @planner.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@planner.errors.count, "error") %>
-          </h2>
-          <ul>
-            <% @planner.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
+    <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
+      <h2 class="text-center mt-3 pb-3">Create a New Session</h2>
+      <%= form_with scope: :planner, url: user_planners_path do |form| %>
+        
+        <div class="field">
+          <p>
+            <strong><%= form.label :dest %></strong>
+            <%= form.text_field :dest %>
+          </p>
         </div>
+        
+        <div class="field">
+          <p>
+            <strong><%= form.label :day%></strong>
+            <%= number_field(:planner, :day, in: 1..31, step: 1) %>
+          </p>
+        </div>
+          
+        <div class="field">
+          <p>
+            <strong><%= form.label :month%> </strong>
+            <%= number_field(:planner, :month, in: 1..12, step: 1) %>
+          </p>
+        </div>        
+
+        <div class="field">
+          <p>
+            <strong><%= form.label :year%></strong>
+            <%= number_field(:planner, :year, in: 2019..2030, step: 1) %>
+          </p>
+        </div>
+        
+        <div class="text-center">
+          <p>
+            <%= form.submit %>
+          </p>
+        </div>
+      <% end %>
+          <!--ERRORS-->
+      <% if @planner.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@planner.errors.count, "error") %>
+            </h2>
+            <ul>
+              <% @planner.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+
+      <hr>
+
+      <div class="text-center">
+        <p><%= link_to 'Back', user_planners_path, class: "btn  btn-outline-primary-bis waves-effect" %></p>
       </div>
-    <% end %>
-
-    <%= form_with scope: :planner, url: user_planners_path do |form| %>
-    <p>
-		
-      <%= form.label :dest %><br>
-      <%= form.text_field :dest %>
-    </p>
-    
-    <%= number_field(:planner, :day, in: 1..31, step: 1) %>
-      <%= form.label :day%> <br>
-    
-	  <%= number_field(:planner, :month, in: 1..12, step: 1) %>
-      <%= form.label :month%> <br>
-   
-      <%= number_field(:planner, :year, in: 2019..2030, step: 1) %>
-
-      <%= form.label :year%> <br>
-    
- 
-    <p>
-      <%= form.submit %>
-    </p>
-    <% end %>
-       
-    <%= button_to 'Back', user_planners_path, method: :get %>
+    </div>
 
   </body>
 </html>

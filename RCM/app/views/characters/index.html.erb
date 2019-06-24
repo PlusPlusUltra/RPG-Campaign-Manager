@@ -21,6 +21,7 @@
                 <p><strong>Race: </strong> <%= character.race %></p>
                 <p><strong>Class: </strong> <%= character.class_type %></p>
                 <p><strong>Info: </strong><%= character.info %></p>
+                
                 <div class="text-center">
                   <p><%= link_to 'Show', user_character_path(current_user, character), class: "btn  btn-outline-primary-bis waves-effect" %>
                   <%= link_to 'Edit', edit_user_character_path(current_user, character), class: "btn  btn-outline-primary-bis waves-effect" %>

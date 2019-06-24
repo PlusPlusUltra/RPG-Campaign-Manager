@@ -1,21 +1,6 @@
 <% provide(:title, "Create a Campaign") %>
 <!DOCTYPE html>
 
-    <!--ERRORS-->
-    <% if @campaign.errors.any? %>
-      <div class="alert alert-danger" role="alert">
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@campaign.errors.count, "error") %>
-          </h2>
-          <ul>
-            <% @campaign.errors.full_messages.each do |msg| %>
-              <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
   <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
     <h2 class="text-center mt-3 pb-3">Create a New Campaign</h2>
       <%= form_with scope: :campaign, url: user_campaigns_path do |form| %>

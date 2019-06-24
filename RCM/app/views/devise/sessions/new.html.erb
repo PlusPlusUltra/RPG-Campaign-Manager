@@ -33,6 +33,27 @@
     <div class="text-center">
       <%= link_to "Back to index page", root_url%><br />
       <%= render "devise/shared/links" %>
+      <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to "Sign in with Google", omniauth_authorize_path(resource_name, provider), { :class => "loginBtn loginBtn--google"} %><br />
+        <% end %>
+      <% end %>
     </div>
+
+    <% if resource.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= I18n.t("errors.messages.not_saved",
+                 count: resource.errors.count,
+                 resource: resource.class.model_name.human.downcase)
+          %>
+        </h2>
+        <ul>
+          <% resource.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
   </div> 

@@ -3,40 +3,68 @@
 <html>
   
   <body>
-    <h1>Session planning</h1>
- 
-      <br>
+    <h1 class="text-center page-title">Session planning</h1>
+    <hr>
 
-      <table>
-        <tr>
-         
-        </tr>
- 
-        <% @planners.each do |planner| %>
-        <tr>
-          <td> Invite from <%= planner.sender %> Answer: <%= planner.answer %></td>
-          
-          
-          <td><%= link_to 'Answer', user_planner_path(current_user, planner) %></td>
-          <td><%= link_to 'Delete', user_planner_path(current_user, planner),
-              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
-        </tr>
-        <% end %>
-        <% @myP.each do |planner| %>
-        <tr>
-          <td> Invite to <%= planner.dest %> on <%= planner.day %>/<%= planner.month %>/<%= planner.year %> answer: <%= planner.answer %></td>
-          
-          
-          <td><%= link_to 'Delete', user_planner_path(current_user, planner),
-              data: { confirm: 'Are you sure?' } , :method => :delete %></td>
-        </tr>
-        <% end %>
+      <div class=" text-center">
+        <%= link_to 'Plan A New Session', new_user_planner_path(@user, @planner), class: "btn  btn-outline-primary waves-effect" %>
+      </div>
+    <hr>
+    
+      <table class="table table-bordered">
+        <caption>Requests Received</caption>
+        <thead>
+          <tr>
+            <th scope="col">Request From</th>
+            <th scope="col">Answer</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @planners.each do |planner| %>
+        
+            <tr class="text text-center">
+              <td><%= planner.sender %> <!--Answer: <%= planner.answer %></td> -->         
+              <td> 
+                <% if(planner.answer=="yes") %>
+                  Accepted
+                <% else %>
+                  <%= link_to 'Answer', user_planner_path(current_user, planner),  class: "btn  btn-outline-primary waves-effect" %>    
+                <% end %>
+              </td>
+              <td><%= link_to 'Delete', user_planner_path(current_user, planner),
+                data: { confirm: 'Are you sure?' } , :method => :delete,  class: "btn  btn-outline-primary waves-effect" %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
 
-    <br>
-    <td><%= button_to 'New', new_user_planner_path(@user, @planner), method: :get %></td>
-    <%= button_to 'Back', root_path, method: :get %>
-    <br>
+
+      <table class="table table-bordered">
+        <thead>
+          <caption>Requests Sent</caption>
+          <tr>
+            <th scope="col">Request to</th>
+            <th scope="col">Date</th>
+            <th scope="col">Answer</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @myP.each do |planner| %>
+            <tr class="text text-center">
+              <td><%= planner.dest %> </td>
+              <td> <%= planner.day %>/<%= planner.month %>/<%= planner.year %> </td>
+              <td> <%= planner.answer %> </td>
+              <td><%= link_to 'Delete', user_planner_path(current_user, planner),
+                data: { confirm: 'Are you sure?' } , :method => :delete,  class: "btn  btn-outline-primary waves-effect" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      
+      </table>
     
   </body>
 </html>
