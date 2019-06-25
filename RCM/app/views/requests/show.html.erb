@@ -5,7 +5,7 @@
   <body>
     <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
       <h2 class="text-center mt-3 pb-3">Accept the Request?  </h2>
-
+      <%= form_with url: acceptI_path do |form| %>
 		  <div class="field">
         <p>
   		    <strong>campaign:</strong>
@@ -34,15 +34,24 @@
 		    </p>
       </div>
 
-      <div class="text-center">
-		    <p>
-          <%= link_to 'Accept',acceptI_path, method: :post, class: "btn  btn-outline-primary-bis waves-effect"%>
-          <%= link_to 'Decline', user_request_path(@user),
-              method: :delete,
-              data: { confirm: 'Are you sure?' }, class: "btn  btn-outline-primary-bis waves-effect" %>
-              </p>
+      <div class="field">
+        <p>
+          <%= form.label :character %>
+          <% options = options_from_collection_for_select(@user.characters, 'id', 'name') %>
+          <%= form.select :character,  options %>
+        </p>
       </div>
 
+      <div class="text-center">
+		    <p>
+          <%= form.submit "Accept", class: "btn  btn-outline-primary-bis waves-effect" %>
+          <!--<%= link_to 'Accept',acceptI_path, method: :post, class: "btn  btn-outline-primary-bis waves-effect"%>-->
+          <%= link_to 'Decline', user_request_path(@user),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }, :class =>  "btn  btn-outline-primary-bis waves-effect" %>
+              </p>
+      </div>
+      <% end %>
       <hr>
 
       <div class="text-center">

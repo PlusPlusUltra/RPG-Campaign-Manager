@@ -70,8 +70,10 @@ class InvitesController < ApplicationController
 		@owner = User.find(Campaign.getDestId)
 		puts "ciaoz"
 		puts(@owner)
+		puts(params[:character])
 		@campaign = Campaign.find(@invite.campaignid)
-		@character_to_add = @owner.characters.find(2)
+		@character_to_add = @owner.characters.find(params[:character])
+		#@character_to_add = @owner.characters.find(2)
 		#@character_to_add = Character.find(:first, conditions => [ "user_id = ?", @owner.id])
 		@campaign.characters << @character_to_add
 		destroy

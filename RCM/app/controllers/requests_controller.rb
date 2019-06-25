@@ -57,7 +57,7 @@ class RequestsController < ApplicationController
 		
 		#@campaign = Campaign.find(@invite.campaignid)
 		@campaign = Campaign.find_by(title: @request.campaign)
-		@character_to_add = @sender.characters.find(2)
+		@character_to_add = @sender.characters.find(params[:character])
 		#@character_to_add = Character.find(:first, conditions => [ "user_id = ?", @owner.id])
 		@campaign.characters << @character_to_add
 		destroy
