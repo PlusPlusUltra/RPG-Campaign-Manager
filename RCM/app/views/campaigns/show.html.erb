@@ -6,49 +6,66 @@
     <div class="row">
       <div class="card shadow-lg col-lg-4 col-md-4 col-sm-3 bg-white mx-auto pt-3 pb-3">
 
-        <p>
-          <strong>Master:</strong>
-          <%= @campaign.master %>
-        </p>
-
-		    <p>
-  		    <strong>Title:</strong>
-  		    <%= @campaign.title %>
-		    </p>
-
-		    <p>
-  		    <strong>Description:</strong>
-  		    <%= @campaign.description %>
-		    </p>
-
-        <% if (current_user.username == @campaign.master) %>
+        <%= form_with url: add_character_path do |form| %>
           <p>
-            <table>
-              <tr>
-                <th>Character's Owner</th>
-                <th>Character's name</th>
-              </tr>
-
-              <% @characters.each do |c| %>
-                <tr>
-                  <td><%= c.user_id  %></td>
-                  <td><%= c.name %></td>
-                </tr>
-              <% end %>
-            </table>
+            <strong>Master:</strong>
+            <%= @campaign.master %>
           </p>
-        <% end %>
+
+		      <p>
+  		      <strong>Title:</strong>
+  		      <%= @campaign.title %>
+		      </p>
+
+		      <p>
+  		      <strong>Description:</strong>
+  		      <%= @campaign.description %>
+		      </p>
+
+          <% if (current_user.username == @campaign.master) %>
+            <p>
+              <table class="table bordered-table">
+                <thead>
+                  <tr>
+                    <th>Character's Owner</th>
+                    <th>Character's name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @characters.each do |c| %>
+                    <tr>
+                      <td><%= User.find(c.user_id).username  %></td>
+                      <td><%= c.name %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </p>
+          <% end %>
 
 
         <div class="text-center">
           <p>
-            <%= link_to 'Add Character', add_character_path, class: "btn  btn-outline-primary-bis waves-effect" %> <!-- This was mostly for testing -->
-    
-            <% if (current_user.username == @campaign.master) %>
+            
+            <% if current_user.admin? %>
+              <div class="field">
+                <p>
+                  <%= form.label :character%> 
+                  <%= collection_select( :character, :character_id, Character.all, :name, :name, {}, {:multiple => false}) %>
+                </p>
+              </div>
+
+              <%= form.submit "Add This Character", class: "btn  btn-outline-primary-bis waves-effect" %>
+              <!--<%= link_to 'Add Character', add_character_path, class: "btn  btn-outline-primary-bis waves-effect" %>  This was mostly for testing -->
+            <% end %>
+
+            <% if (current_user.username == @campaign.master || current_user.admin?) %>
               <%= link_to 'Manage Characters', manage_characters_path, class: "btn  btn-outline-primary-bis waves-effect" %>
             <% end %>
+
           </p>
         </div>
+        <% end %>
 
         <div class="text-center">
 		      <p>

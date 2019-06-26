@@ -72,12 +72,10 @@ class CampaignsController < ApplicationController
 	#This is just a proof of concept. It works but it needs changes. Also it needs a check to
 	#see to whom the character belogns to
 	def add_character
-		@user=User.find(params[:user_id])
-		@campaign = @user.campaigns.find(params[:id])
-		@owner = User.find(2)
-		@character_to_add = @owner.characters.find(1)
+		@campaign = Campaign.find(params[:id])
+		@character_to_add = Character.find_by_name(params[:character][:character_id])
+		@owner_of_c=User.find(@character_to_add.user_id)
 		@campaign.characters << @character_to_add
-
 		redirect_to manage_characters_path
 	end
 	def accept_invite

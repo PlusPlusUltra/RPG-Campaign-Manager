@@ -36,7 +36,6 @@
 
       <div class="field">
         <p>
-          <%= form.label :character %>
           <% options = options_from_collection_for_select(@user.characters, 'id', 'name') %>
           <%= form.select :character,  options %>
         </p>
@@ -49,7 +48,7 @@
           <%= link_to 'Decline', user_request_path(@user),
               method: :delete,
               data: { confirm: 'Are you sure?' }, :class =>  "btn  btn-outline-primary-bis waves-effect" %>
-              </p>
+        </p>
       </div>
       <% end %>
       <hr>

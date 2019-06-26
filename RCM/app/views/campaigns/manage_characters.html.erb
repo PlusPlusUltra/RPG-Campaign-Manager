@@ -3,21 +3,28 @@
 <html>
   
   <body>
-    <h1>Manage this campaign's characters</h1>
- 
-      <table>
-        <tr>
-         <th>Character's Owner</th>
-          <th>Character's name</th>
-        </tr>
+    <h1 class="text-center page-title ">Manage this campaign's characters</h1>
+    <hr>
+      
+      <table class="table table-bordered">
+        <thead>
+          <caption>Campaign's Characters</caption>
+          <tr>
+            <th>Character's Owner</th>
+            <th>Character's name</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
 
-        <% @characters.each do |c| %>
-        <tr>
-        	<td><%= c.user_id  %></td> <!-- Probably need to add column to characters with username of the owner -->
-        	<td><%= c.name %></td>
-        	<td><%= button_to 'Remove', remove_character_path(current_user, @campaign, c) %></td>
-        </tr>
-        <% end %>
+        <tbody>
+          <% @characters.each do |c| %>
+            <tr>
+        	     <td><%= c.user_id  %></td> <!-- Probably need to add column to characters with username of the owner -->
+        	     <td><%= c.name %></td>
+        	     <td><%= button_to 'Remove', remove_character_path(current_user, @campaign, c) %></td>
+            </tr>
+          <% end %>
+        </tbody>
       </table>
     </body>
 </html>
