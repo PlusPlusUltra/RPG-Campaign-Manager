@@ -30,7 +30,7 @@
                 <% end %>
                 <p><%= link_to "Upgrade to Admin", change_role_path(user.id), class: "btn  btn-outline-primary-bis waves-effect" %><br /></p>
               <% elsif (current_user.email =="pivarim@gmail.com" || current_user.email =="perottofederico@gmail.com" ||current_user.email =="deluca.1753532@studenti.uniroma1.it" )||(user.email==current_user.email)%>
-                <p><%= link_to "Downgrade to User", change_role_path(user.id), class: "btn  btn-outline-primary-bis waves-effect" %><br /></p>
+                <p><%= link_to "Downgrade to User", change_role_path(user.id), class: "btn  btn-outline-primary-bis waves-effect", id: user.id %><br /></p>
               <% end %>
             </div>
         </div>
