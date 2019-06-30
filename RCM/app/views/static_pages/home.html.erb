@@ -7,44 +7,91 @@
     
     <div class="row text-center home">
       <div class="col-3">
-        <%= link_to 'My Characters', user_characters_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %>  
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">Characters</h5>
+            <p class="card-text text-muted">Here you can view and edit all of your characters, or create new ones!</p><br>
+            <%= link_to 'My Characters', user_characters_path(current_user.id), class: "btn  btn-outline-primary-bis waves-effect" %> 
+          </div>
+        </div>
       </div>
 
       <div class= "col-3">
-        <%= link_to 'My Campaigns', user_campaigns_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">Campaigns</h5>
+            <p class="card-text text-muted">Here you can view and edit all of your campaigns or create new ones, or you send invites to other users!</p>
+            <%= link_to 'My Campaigns', user_campaigns_path(current_user.id), class: "btn  btn-outline-primary-bis waves-effect" %>
+          </div>
+        </div> 
       </div>
         
       <div class= "col-3">
-        <%= link_to 'Invites', user_invites_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">Invites</h5>
+            <p class="card-text text-muted">Here you can view and manage and answer the invites you have received to join a camaign.</p>
+            <%= link_to 'Invites', user_invites_path(current_user.id), class: "btn  btn-outline-primary-bis waves-effect" %>
+          </div>
+        </div>
       </div>
 
       <div class="col-3">
-          <%= link_to 'Requests', user_requests_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">Requests</h5>
+            <p class="card-text text-muted">Here you can see and manage all the requests you have received to join a campaign.</p>
+            <%= link_to 'Requests', user_requests_path(current_user.id), class: "btn  btn-outline-primary-bis waves-effect" %> 
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="row text-center home">
 
       <div class="col-3">
-        <%= link_to "View Profile", static_pages_profile_path, class: "btn  btn-outline-primary waves-effect"%>
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">Profile</h5>
+            <p class="card-text text-muted pb-4">Here you can view and modify your info, or delete your account.</p>
+            <%= link_to "View Profile", static_pages_profile_path, class: "btn  btn-outline-primary-bis waves-effect"%>
+          </div>
+        </div>
       </div>
 
       <div class="col-3">
         <% if current_user.admin? %>
-          <%= link_to "All Users", static_pages_show_all_users_path ,class: "btn  btn-outline-primary waves-effect" %>
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">All Users</h5>
+            <p class="card-text text-muted pb-5 ">As an admin, you can view a list of all the registered users.</p>
+            <%= link_to "All Users", static_pages_show_all_users_path ,class: "btn  btn-outline-primary-bis waves-effect" %>
+          </div>
+        </div>
         <% end %>
       </div>
 
       <div class="col-3">
         <% if current_user.admin? %>
-          <%= link_to "All Campaigns", static_pages_show_all_campaigns_path, class: "btn  btn-outline-primary waves-effect" %>
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">All Campaigns</h5>
+            <p class="card-text text-muted pb-4">As an admin, you can view a list of all the existing campaigns</p>
+            <%= link_to "All Campaigns", static_pages_show_all_campaigns_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+          </div>
+        </div>
         <% end %>
       </div>
 
       <div class="col-3">
-          <%= link_to 'Session Planning', user_planners_path(current_user.id), class: "btn  btn-outline-primary waves-effect" %> 
+        <div class="card" style="width: 16rem; height: 14rem;">
+          <div class="card-body">
+            <h5 class="card-title">Planners</h5>
+            <p class="card-text text-muted">Here you can see all the game session you have sent to or received from your friends</p>
+            <%= link_to 'Session Planning', user_planners_path(current_user.id), class: "btn  btn-outline-primary-bis waves-effect" %> 
+          </div>
+        </div>
       </div>
-
     </div>
       
     </div>

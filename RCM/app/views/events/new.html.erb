@@ -2,48 +2,62 @@
 <html>
   <body>
 
-    
+  <div class=" card shadow-lg col-lg-4 col-md-6 bg-white mx-auto pt-2" >
+    <h2 class="text-center mt-3 pb-3">Create a New Calendar Event</h2>   
+
+    <hr>
 
     <%= form_with scope: :event, url: events_path do |form| %>
-    <p>
-      <%= number_field(:event, :start_day, in: 1..31, step: 1) %>
-      <%= form.label :start_day%> <br>
-    
-	  <%= number_field(:event, :start_month, in: 1..12, step: 1) %>
-      <%= form.label :start_month%> <br>
-   
-      <%= number_field(:event, :start_year, in: 2019..2030, step: 1) %>
 
-      <%= form.label :start_year%> <br>
-    </p>
     <p>
-      <%= number_field(:event, :start_hour, in: 1..24, step: 1) %>
-      <%= form.label :start_hour%> <br>
+      <strong><%= form.label :start_day%></strong>
+      <!--<%= form.date_field :start_date, as: :date %>-->
+      <%= number_field(:event, :start_day, in: 1..31, step: 1) %> <br>
     
-      <%= number_field(:event, :start_minute, in: 1..60, step: 1) %>
-      <%= form.label :start_minute%> <br>
+
+      <strong><%= form.label :start_month%> </strong>
+      <%= number_field(:event, :start_month, in: 1..12, step: 1) %><br>
+   
+      <strong><%= form.label :start_year%></strong>
+      <%= number_field(:event, :start_year, in: 2019..2030, step: 1) %> <br>
     </p>
+   
     <p>
-      <%= number_field(:event, :end_day, in: 1..31, step: 1) %>
-      <%= form.label :end_day%> <br>
+      <strong><%= form.label :start_hour%> </strong>
+      <%= number_field(:event, :start_hour, in: 1..24, step: 1) %><br>
     
-      <%= number_field(:event, :end_month, in: 1..12, step: 1) %>
-      <%= form.label :end_month%> <br>
-    
-      <%= number_field(:event, :end_year, in: 2019..2030, step: 1) %>
-      <%= form.label :end_year%> <br>
+      <strong><%= form.label :start_minute%> </strong>
+      <%= number_field(:event, :start_minute, in: 1..60, step: 1) %><br>
     </p>
+
     <p>
-      <%= number_field(:event, :end_hour, in: 1..24, step: 1) %>
-      <%= form.label :end_hour%> <br>
+      <strong><%= form.label :end_day%> </strong>
+      <%= number_field(:event, :end_day, in: 1..31, step: 1) %><br>
     
-      <%= number_field(:event, :end_minute, in: 1..60, step: 1) %>
-      <%= form.label :end_minute%> <br>
+      <strong><%= form.label :end_month%> </strong>
+      <%= number_field(:event, :end_month, in: 1..12, step: 1) %><br>
+    
+      <strong><%= form.label :end_year%> </strong>
+      <%= number_field(:event, :end_year, in: 2019..2030, step: 1) %><br>
     </p>
+
     <p>
-      <%= form.submit %>
+      <strong><%= form.label :end_hour%> </strong>
+      <%= number_field(:event, :end_hour, in: 1..24, step: 1) %><br>
+      
+      <strong><%= form.label :end_minute%> </strong>
+      <%= number_field(:event, :end_minute, in: 1..60, step: 1) %><br>
     </p>
+
+    <hr>
+
+    <p class="text-center">
+      <%= form.submit "Save", class: "btn  btn-outline-primary-bis waves-effect"%>
+    </p>
+
     <% end %>
+
+  </div>
 
   </body>
 </html>

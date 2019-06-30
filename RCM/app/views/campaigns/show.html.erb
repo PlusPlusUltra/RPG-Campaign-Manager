@@ -69,11 +69,18 @@
 
         <div class="text-center">
 		      <p>
-            <%= link_to 'Back to My Campaigns', user_campaigns_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+            
+            <%= button_to 'New session event', new_event_path, method: :get, class: "btn  btn-outline-primary-bis waves-effect" %>
+            <p></p>
 
             <%= link_to 'Edit', edit_user_campaign_path(@user), class: "btn  btn-outline-primary-bis waves-effect" %>
 
             <%= link_to 'Delete', user_campaign_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn  btn-outline-primary-bis waves-effect" %>
+
+            <hr>
+
+            <%= link_to 'Back to My Campaigns', user_campaigns_path, class: "btn  btn-outline-primary-bis waves-effect" %>
+    
           </p>
         </div>
       </div>
